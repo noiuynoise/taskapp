@@ -8,7 +8,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 
-public class CreateProjectHandler implements RequestHandler<String, void> {
+public class CreateProjectHandler implements RequestHandler<String, null> {
 
     private AmazonS3 s3 = AmazonS3ClientBuilder.standard().build();
 
