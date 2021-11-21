@@ -1,4 +1,4 @@
-package com.taskapp.lambda.taskhandler;
+package com.cs3733.taskapp.app;
 
 import com.amazonaws.services.lambda.runtime.ClientContext;
 import com.amazonaws.services.lambda.runtime.CognitoIdentity;

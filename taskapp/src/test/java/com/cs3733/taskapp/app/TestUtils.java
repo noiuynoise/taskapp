@@ -1,4 +1,4 @@
-package com.taskapp.lambda.taskhandler;
+package com.cs3733.taskapp.app;
 
 import java.io.IOException;
 import java.io.InputStream;

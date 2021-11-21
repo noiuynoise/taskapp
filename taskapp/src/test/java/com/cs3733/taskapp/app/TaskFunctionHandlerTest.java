@@ -1,4 +1,4 @@
-package com.taskapp.lambda.taskhandler;
+package com.cs3733.taskapp.app;
 
 import static org.mockito.Mockito.when;
 
@@ -24,7 +24,7 @@ import com.amazonaws.services.s3.model.S3Object;
  * A simple test harness for locally invoking your Lambda function handler.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class LambdaFunctionHandlerTest {
+public class TaskFunctionHandlerTest {
 
     private final String CONTENT_TYPE = "image/jpeg";
     private S3Event event;
@@ -58,8 +58,8 @@ public class LambdaFunctionHandlerTest {
     }
 
     @Test
-    public void testLambdaFunctionHandler() {
-        LambdaFunctionHandler handler = new LambdaFunctionHandler(s3Client);
+    public void testTaskFunctionHandler() {
+        TaskFunctionHandler handler = new TaskFunctionHandler(s3Client);
         Context ctx = createContext();
 
         String output = handler.handleRequest(event, ctx);
