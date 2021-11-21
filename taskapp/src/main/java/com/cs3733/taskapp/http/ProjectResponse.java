@@ -9,7 +9,7 @@ public class ProjectResponse {
 	public Teammate[] getTeammates() { return teammates; }
 	public void setTeammates(Teammate[] teammates) { this.teammates = teammates; }
 	
-	public Task getTasks() { return tasks; }
+	public Task[] getTasks() { return tasks; }
 	public void setTasks(Task[] tasks) { this.tasks = tasks; }
 	
 	public Boolean getArchived() { return archived; }

@@ -7,8 +7,9 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
+import com.cs3733.taskapp.http.ProjectResponse;
 
-public class CreateProjectHandler implements RequestHandler<String, null> {
+public class CreateProjectHandler implements RequestHandler<String, ProjectResponse> {
 
     private AmazonS3 s3 = AmazonS3ClientBuilder.standard().build();
 
@@ -20,7 +21,7 @@ public class CreateProjectHandler implements RequestHandler<String, null> {
     }
 
     @Override
-    public void handleRequest(String input, Context context) {
+    public ProjectResponse handleRequest(String input, Context context) {
         context.getLogger().log("Received name: " + input);
 
         // Get the object from the event and show its content type
