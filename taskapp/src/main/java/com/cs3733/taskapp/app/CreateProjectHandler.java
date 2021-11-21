@@ -8,29 +8,29 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 
-public class TaskFunctionHandler implements RequestHandler<S3Event, String> {
+public class CreateProjectHandler implements RequestHandler<String, void> {
 
     private AmazonS3 s3 = AmazonS3ClientBuilder.standard().build();
 
-    public TaskFunctionHandler() {}
+    public CreateProjectHandler() {}
 
     // Test purpose only.
-    TaskFunctionHandler(AmazonS3 s3) {
+    CreateProjectHandler(AmazonS3 s3) {
         this.s3 = s3;
     }
 
     @Override
-    public String handleRequest(S3Event event, Context context) {
-        context.getLogger().log("Received event: " + event);
+    public void handleRequest(String input, Context context) {
+        context.getLogger().log("Received name: " + input);
 
         // Get the object from the event and show its content type
-        String bucket = event.getRecords().get(0).getS3().getBucket().getName();
-        String key = event.getRecords().get(0).getS3().getObject().getKey();
+        //String bucket = event.getRecords().get(0).getS3().getBucket().getName();
+        //String key = event.getRecords().get(0).getS3().getObject().getKey();
         try {
             S3Object response = s3.getObject(new GetObjectRequest(bucket, key));
             String contentType = response.getObjectMetadata().getContentType();
             context.getLogger().log("CONTENT TYPE: " + contentType);
-            return contentType;
+            return;
         } catch (Exception e) {
             e.printStackTrace();
             context.getLogger().log(String.format(
