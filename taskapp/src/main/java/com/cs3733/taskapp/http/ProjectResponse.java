@@ -24,7 +24,7 @@ public class ProjectResponse {
 		return "Add(" + archived + "," + projectid + ")";
 	}
 	
-	public ProjectResponse(Teammate[] teammates, Task[] tasks, Boolean archived, String projectid) {
+	public ProjectResponse( String projectid, Teammate[] teammates, Task[] tasks, Boolean archived) {
 		this.teammates = teammates;
 		this.tasks = tasks;
 		this.archived = archived;
