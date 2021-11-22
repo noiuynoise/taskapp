@@ -1,6 +1,24 @@
 package com.cs3733.taskapp.http;
 
 public class Task {
+
+//	Task:
+//	    type: object
+//	    required:
+//	    - name
+//	    properties:
+//	      name:
+//	        type: string
+//	      subtasks:
+//	        type: array
+//	        items: 
+//	          $ref: "#/definitions/Task"
+//	      id:
+//	        type: string
+//	      complete:
+//	        type: boolean
+	
+	
 	String name;
 	Task subtasks[];
 	String id;
@@ -17,5 +35,6 @@ public class Task {
 
 	public Boolean getComplete() { return complete; }
 	public void setComplete(Boolean complete) { this.complete = complete; }
+
 
 }
