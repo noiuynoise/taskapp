@@ -8,6 +8,8 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.cs3733.taskapp.http.ProjectResponse;
+import com.cs3733.taskapp.http.Task;
+import com.cs3733.taskapp.http.Teammate;
 
 public class CreateProjectHandler implements RequestHandler<String, ProjectResponse> {
 
@@ -24,19 +26,17 @@ public class CreateProjectHandler implements RequestHandler<String, ProjectRespo
     public ProjectResponse handleRequest(String input, Context context) {
         context.getLogger().log("Received name: " + input);
 
-        // Get the object from the event and show its content type
-        //String bucket = event.getRecords().get(0).getS3().getBucket().getName();
-        //String key = event.getRecords().get(0).getS3().getObject().getKey();
+        ProjectResponse project = new ProjectResponse(input, new Teammate[0], new Task[0], false);
         try {
-            S3Object response = s3.getObject(new GetObjectRequest(bucket, key));
-            String contentType = response.getObjectMetadata().getContentType();
-            context.getLogger().log("CONTENT TYPE: " + contentType);
-            return;
+            //S3Object response = s3.getObject(new GetObjectRequest(bucket, key));
+            //String contentType = response.getObjectMetadata().getContentType();
+            //context.getLogger().log("CONTENT TYPE: " + contentType);
+            return project;
         } catch (Exception e) {
             e.printStackTrace();
             context.getLogger().log(String.format(
-                "Error getting object %s from bucket %s. Make sure they exist and"
-                + " your bucket is in the same region as this function.", key, bucket));
+                "Error getting object from bucket. Make sure they exist and"
+                + " your bucket is in the same region as this function."));
             throw e;
         }
     }
