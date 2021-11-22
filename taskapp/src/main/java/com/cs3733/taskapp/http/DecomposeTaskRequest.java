@@ -18,10 +18,10 @@ public class DecomposeTaskRequest {
 		return "DecomposeTaskRequest(" + projectid + "," + taskid + ")";
 	}
 	
-	public DecomposeTaskRequest(Task[] tasks, String projectid, String taskid) {
-		this.tasks = tasks;
+	public DecomposeTaskRequest(String projectid, String taskid, Task[] tasks) {
 		this.projectid = projectid;
 		this.taskid  = taskid;
+		this.tasks = tasks;
 	}
 	
 	public DecomposeTaskRequest() {
