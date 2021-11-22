@@ -12,10 +12,10 @@ public class TeammateRequest {
 	public void setProjectID(String projectid) { this.projectid = projectid; }
 
 	public String toString() {
-		return "Add(" + name + "," + projectid + ")";
+		return "Add(" + projectid + "," + name + ")";
 	}
 	
-	public TeammateRequest(String name, String projectid) {
+	public TeammateRequest(String projectid, String name) {
 		this.name = name;
 		this.projectid = projectid;
 	}
