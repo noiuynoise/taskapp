@@ -25,7 +25,6 @@ public class RenameTaskRequest {
 		this.newName = newName;
 	}
 	
-	
 	public RenameTaskRequest () {
 		
 	}
