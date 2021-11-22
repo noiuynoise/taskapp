@@ -11,8 +11,7 @@ public class ErrorResponse {
 		return errorMessage;
 	}
 	
-	
-	public String ErrorResponse() {
-		return errorMessage;
+	public  ErrorResponse(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 }
