@@ -11,6 +11,10 @@ public class ListProjectsResponse {
 		this.projects = projects;
 	}
 	
+	public String toString() {
+		return "ListProjectResponse(" + projects + ")";
+	}
+	
 	public ListProjectsResponse() {
 	}
 }
