@@ -14,6 +14,12 @@ public class Project {
 	public Double getCompletion() { return completion; }
 	public void setCompletion(Double completion) { this.completion = completion; }
 	
+	
+	public String toString() {
+		return "Project(" + projectname + ", " + projectid + ", " + completion + ")";
+	}
+	
+	
 	public Project(String projectname, String projectid, Double completion) {
 		this.projectname = projectname;
 		this.projectid = projectid;

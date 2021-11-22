@@ -8,6 +8,10 @@ public class ProjectRequest {
 	public void setProjectID (String projectID) {this.projectID = projectID;}
 	
 	
+	public String toString() {
+		return "ProjectRequest(" + projectID + ")";
+	}
+	
 	public ProjectRequest (String projectID)
 	{
 		this.projectID = projectID;

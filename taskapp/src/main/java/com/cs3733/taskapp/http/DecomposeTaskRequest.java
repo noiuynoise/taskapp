@@ -15,7 +15,7 @@ public class DecomposeTaskRequest {
 	public void setTaskID(String taskid) { this.taskid = taskid; }
 
 	public String toString() {
-		return "DecomposeTaskRequest(" + projectid + "," + taskid +  "," + tasks + ")";
+		return "DecomposeTaskRequest(" + projectid + "," + taskid + ")";
 	}
 	
 	public DecomposeTaskRequest(Task[] tasks, String projectid, String taskid) {
