@@ -2,20 +2,6 @@ package com.cs3733.taskapp.http;
 
 public class RenameTaskRequest {
 
-//	RenameTaskRequest:
-//	    type: object
-//	    required:
-//	    - taskid
-//	    - projectid
-//	    - newname
-//	    properties:
-//	      taskid:
-//	        type: string
-//	      projectid:
-//	        type: string
-//	      newname:
-//	        type: string
-	
 	
 	String taskID;
 	String projectID;
