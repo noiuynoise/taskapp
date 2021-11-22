@@ -8,8 +8,7 @@ public class ProjectRequest {
 	public void setProjectID (String projectid) {this.projectid = projectid;}
 	
 	
-	public ProjectRequest (String projectid)
-	{
+	public ProjectRequest (String projectid){
 		this.projectid = projectid;
 	}
 	
