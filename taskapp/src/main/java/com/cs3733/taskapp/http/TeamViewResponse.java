@@ -11,7 +11,7 @@ public class TeamViewResponse {
 	public void setProjectID(String projectid) { this.projectid = projectid; }
 
 	public String toString() {
-		return "TeamViewResponse(" + projectid + "," + teammates + ")";
+		return "TeamViewResponse(" + projectid + ")";
 	}
 	
 	public TeamViewResponse(Teammate[] teammates, String projectid) {

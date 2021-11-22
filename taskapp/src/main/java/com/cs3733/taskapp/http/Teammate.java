@@ -15,6 +15,9 @@ public class Teammate {
 		this.tasks = tasks;
 		this.name = name;
 	}
+	public String toString() {
+		return "Teammate(" + name + ")";
+	}
 	
 	public Teammate() {
 	}

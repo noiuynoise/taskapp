@@ -18,6 +18,10 @@ public class Task {
 
 	public Boolean getComplete() { return complete; }
 	public void setComplete(Boolean complete) { this.complete = complete; }
+	
+	public String toString() {
+		return "Task(" + name + ", " + id + ", " + complete + ")";
+	}
 
 
 }
