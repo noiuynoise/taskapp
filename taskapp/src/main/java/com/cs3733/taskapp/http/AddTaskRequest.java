@@ -11,10 +11,10 @@ public class AddTaskRequest {
 	public void setProjectID(String projectid) { this.projectid = projectid; }
 
 	public String toString() {
-		return "TeamViewResponse(" + projectid +  ")";
+		return "AddTaskResponse(" + projectid +  ")";
 	}
 	
-	public AddTaskRequest(Task[] tasks, String projectid) {
+	public AddTaskRequest(String projectid, Task[] tasks) {
 		this.tasks = tasks;
 		this.projectid = projectid;
 	}
