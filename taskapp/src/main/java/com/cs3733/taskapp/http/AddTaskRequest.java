@@ -14,7 +14,7 @@ public class AddTaskRequest {
 		return "TeamViewResponse(" + projectid +  ")";
 	}
 	
-	public AddTaskRequest(Task[] tasks, String projectid) {
+	public AddTaskRequest(String projectid, Task[] tasks) {
 		this.tasks = tasks;
 		this.projectid = projectid;
 	}
