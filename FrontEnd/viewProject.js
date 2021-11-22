@@ -23,9 +23,16 @@ function processProjectViewResponse(response) {
     var id = js["projectID"];
 
     if (response.status == 200) {
-        location.href="projectview.html"
-        document.getElementById("projectNameTitle").innerHTML = "Bob"
+        location.href="projectview.html#" + id
     } else {
         console.log("400")
     }
+}
+
+function loadProjectView() {
+    var hash = location.hash.substring(1);
+    document.getElementById("projectNameTitle").innerHTML = hash
+    document.title = hash
+    handleViewProjectClick(hash)
+
 }
