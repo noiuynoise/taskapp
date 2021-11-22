@@ -1,7 +1,6 @@
 package com.cs3733.taskapp.http;
 
 public class Teammate {
-<<<<<<< HEAD
 
 //	  Teammate:
 //		    type: object
@@ -15,11 +14,7 @@ public class Teammate {
 //		        items: 
 //		          $ref: "#/definitions/Task"
 	
-	String name;
-	Task tasks[];
-	
-	
-=======
+
 	Task tasks[];
 	String name;
 	
@@ -36,5 +31,5 @@ public class Teammate {
 	
 	public Teammate() {
 	}
->>>>>>> branch 'master' of https://github.com/noiuynoise/taskapp.git
+
 }
