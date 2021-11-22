@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TaskApp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/png" href="lola.JPG"/>
+    <script type='text/javascript' src="createProject.js"></script>
+    <script type='text/javascript' src="api.js"></script>
+    <script type='text/javascript' src="viewProject.js"></script>
+
+</head>
+<body>
+<h1 id="TitleHeader">TaskApp</h1>
+<h2 id="NameHeader">Colby Frechette, Andrew Mularoni, Nikki Espeland, Zeke Andreassen</h2>
+
+<div id="InputDiv">
+    <input type="text" id="projectName" name="projectName">
+</div>
+
+<div id="ButtonDiv">
+    <button type="button" id="openButton" onClick="Javascript:handleViewProjectClick('Andrew')"></button>
+    <button type="button" id="createNewButton" onClick="Javascript:handleCreateClick(this)"></button>
+</div>
+
+<div id="adminDiv">
+    <button id="adminButton" type="button" style="background-color:#f14e4e" onclick="location.href='adminpage.html';">Admin View</button>
+</div>
+
+<div id="errorDiv">
+    <p id="errorText"></p>
+</div>
+
+
+</body>
+</html>

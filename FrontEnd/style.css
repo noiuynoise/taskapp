@@ -1,0 +1,155 @@
+#TitleHeader{
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-family: "Comic Sans MS", serif;
+
+    font-size: 50px;
+
+}
+
+#NameHeader{
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-family: "Comic Sans MS", serif;
+
+    font-size: 20px;
+}
+
+#InputDiv{
+    width: 398px;
+    height: 127px;
+    background-image: url("textinput.PNG");
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#projectName{
+    background: none;
+    border: none;
+    text-align: center;
+    margin: auto;
+    width: 390px;
+    height: 120px;
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    font-family: "Comic Sans MS", serif;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;
+}
+
+#ButtonDiv{
+    width: 400px;
+    height: 120px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#openButton{
+    background-image: url("openButton.PNG");
+    width: 170px;
+    height: 58px;
+    margin-right: 10px;
+}
+
+#createNewButton{
+    background-image: url("createNewButton.PNG");
+    width: 180px;
+    height: 58px;
+}
+
+#openButton:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#createNewButton:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#adminDiv{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#returnDiv{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#adminButton{
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:0 0.1em 0.1em 0;
+    border:0.16em solid rgba(255,255,255,0);
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    text-align:center;
+    transition: all 0.2s;
+}
+#adminButton:hover{
+    border-color: rgba(255,255,255,1);
+}
+@media all and (max-width:30em){
+    #adminButton{
+        display:block;
+        margin:0.2em auto;
+        }
+}
+
+#returnButton{
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:0 0.1em 0.1em 0;
+    border:0.16em solid rgba(255,255,255,0);
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    text-align:center;
+    transition: all 0.2s;
+}
+#returnButton:hover{
+    border-color: rgba(255,255,255,1);
+}
+@media all and (max-width:30em){
+    #returnButton{
+        display:block;
+        margin:0.2em auto;
+    }
+}
+
+#projectTable, th{
+    border: 1px solid black;
+}
+
+#projectTable{
+    width: 200px;
+}
+
+#projectNameTitle{
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-family: "Comic Sans MS", serif;
+
+    font-size: 50px;
+
+}
