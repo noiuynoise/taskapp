@@ -17,10 +17,16 @@ public class ListProjectsResponse {
 //	            completion:
 //	              type: number
 	
+
+	Project projects[];
 	
+	public Project[] getProjects() { return projects; }
+	public void setProjects(Project[] projects) { this.projects = projects; }
 	
+	public ListProjectsResponse(Project[] projects) {
+		this.projects = projects;
+	}
 	
-	
-	
-	
+	public ListProjectsResponse() {
+	}
 }
