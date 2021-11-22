@@ -1,0 +1,227 @@
+---
+swagger: "2.0"
+info:
+  description: "Test API"
+  version: "1.0.3"
+  title: "Test API"
+# host: "xqagxkd8b7.execute-api.us-east-1.amazonaws.com"
+# basePath: "/beta"
+schemes:
+- "https"
+paths:
+  /calculator:
+    post:
+      operationId: "requestSum"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "CalculationRequest"
+        required: true
+        schema:
+          $ref: "#/definitions/CalculationRequest"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AddResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        "400":
+          description: "400 response"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:883421610071:function:second/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+    options:
+      consumes:
+      - "application/json"
+      responses: {}
+      x-amazon-apigateway-integration:
+        type: "mock"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+  /constants:
+    get:
+      operationId: "getConstants"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ListOfConstants"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        "400":
+          description: "400 response"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:883421610071:function:listConstants/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+    post:
+      operationId: "createConstant"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Constant"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        "400":
+          description: "400 response"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:883421610071:function:createConstant/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+    options:
+      consumes:
+      - "application/json"
+      responses: {}
+      x-amazon-apigateway-integration:
+        type: "mock"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+  /constants/{constantname}:
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "constantname"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/DeleteConstantResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:883421610071:function:deleteConstant/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+            responseTemplates:
+              application/json: "#set($inputRoot = $input.path('$'))\n{\n  \"name\"\
+                \ : \"$input.params('constantname')\",\n  \"statusCode\" : \"$inputRoot.statusCode\"\
+                ,\n  \"error\" : \"$inputRoot.error\"\n}"
+        requestTemplates:
+          application/json: "{\n    \"name\" : \"$input.params('constantname')\"\n\
+            }\n"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses: {}
+      x-amazon-apigateway-integration:
+        type: "mock"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+definitions:
+  CalculationRequest:
+    type: "object"
+    required:
+    - "arg1"
+    - "arg2"
+    properties:
+      arg1:
+        type: "string"
+      arg2:
+        type: "string"
+  Constant:
+    type: "object"
+    required:
+    - "name"
+    - "system"
+    - "value"
+    properties:
+      name:
+        type: "string"
+      value:
+        type: "number"
+      system:
+        type: "boolean"
+  ListOfConstants:
+    type: "array"
+    items: {}
+  AddResponse:
+    type: "object"
+    required:
+    - "error"
+    - "result"
+    - "statusCode"
+    properties:
+      result:
+        type: "string"
+      statusCode:
+        type: "integer"
+      error:
+        type: "string"
+  DeleteConstantResponse:
+    type: "object"
+    required:
+    - "error"
+    - "name"
+    - "statusCode"
+    properties:
+      name:
+        type: "string"
+      statusCode:
+        type: "integer"
+      error:
+        type: "string"
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /heineman/Fall2021Calculator/1.0.3
