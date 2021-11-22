@@ -25,9 +25,6 @@ public class RenameTaskRequest {
 		this.newName = newName;
 	}
 	
-	public String toString() {
-		return "RenameTaskRequest" + taskID + ", " + projectID + ", " + newName + ")";
-	}
 	
 	public RenameTaskRequest () {
 		
