@@ -1,23 +1,6 @@
 package com.cs3733.taskapp.http;
 
 public class Task {
-
-//	Task:
-//	    type: object
-//	    required:
-//	    - name
-//	    properties:
-//	      name:
-//	        type: string
-//	      subtasks:
-//	        type: array
-//	        items: 
-//	          $ref: "#/definitions/Task"
-//	      id:
-//	        type: string
-//	      complete:
-//	        type: boolean
-	
 	
 	String name;
 	Task subtasks[];
