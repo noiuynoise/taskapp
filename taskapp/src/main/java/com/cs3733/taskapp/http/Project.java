@@ -20,7 +20,7 @@ public class Project {
 	}
 	
 	
-	public Project(String projectname, String projectid, Double completion) {
+	public Project( String projectid, String projectname, Double completion) {
 		this.projectname = projectname;
 		this.projectid = projectid;
 		this.completion = completion;
