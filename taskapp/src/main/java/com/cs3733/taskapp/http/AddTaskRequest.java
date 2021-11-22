@@ -15,8 +15,8 @@ public class AddTaskRequest {
 	}
 	
 	public AddTaskRequest(String projectid, Task[] tasks) {
-		this.tasks = tasks;
 		this.projectid = projectid;
+		this.tasks = tasks;
 	}
 	
 	public AddTaskRequest() {
