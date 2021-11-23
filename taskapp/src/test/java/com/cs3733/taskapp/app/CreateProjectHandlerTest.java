@@ -13,9 +13,11 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.events.S3Event;
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
@@ -60,10 +62,11 @@ public class CreateProjectHandlerTest {
 
     @Test
     public void testTaskFunctionHandler() {
+    	//s3Client.setRegion();
     	CreateProjectHandler handler = new CreateProjectHandler(s3Client);
         Context ctx = createContext();
 
-        ProjectResponse output = handler.handleRequest("name", ctx);
+        ProjectResponse output = handler.handleRequest("name2", ctx);
 
         // TODO: validate output here if needed.
         Assert.assertEquals(CONTENT_TYPE, output);

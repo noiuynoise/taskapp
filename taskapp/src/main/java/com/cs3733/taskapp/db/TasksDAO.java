@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.amazonaws.services.lambda.runtime.Context;
 import com.cs3733.taskapp.http.Task;
 
 
@@ -19,15 +20,23 @@ public class TasksDAO {
 	java.sql.Connection conn;
 	
 	final String tblName = "TaskApp_Tasks";   // Exact capitalization
+	Context context;
 
-    public TasksDAO() {
+    public TasksDAO(Context context) {
+    	this.context = context;
     	try  {
+    		context.getLogger().log("Connecting");
     		conn = DatabaseUtil.connect();
+    		context.getLogger().log("Connected");
     	} catch (Exception e) {
     		conn = null;
     	}
     }
-
+/*    
+    public Project getProject(String name) {
+    	
+    }
+*/    
     public Task getTask(String taskID) throws Exception {
         
         try {
@@ -52,16 +61,15 @@ public class TasksDAO {
     
     public boolean updateTask(Task task) throws Exception {
         try {
-        	String query = "UPDATE " + tblName + " SET value=? WHERE TUUID=?;";
+        	String query = "UPDATE " + tblName + " SET PUUID=? name=? complete=? archived=? id=?  WHERE TUUID=?;";
         	PreparedStatement ps = conn.prepareStatement(query);
-//            ps.setDouble(1, task.value);
-//            ps.setString(2, constant.name);
-        	ps.setString(1, task.getID());
-        	ps.setString(2, task.getParentID());
-        	ps.setString(3, task.getName());
-        	ps.setBoolean(4, task.getComplete());
-        	ps.setBoolean(5, false);
-        	ps.setInt(6, task.getIDNum());
+        	
+        	ps.setString(1, task.getParentID());
+        	ps.setString(2, task.getName());
+        	ps.setBoolean(3, task.getComplete());
+        	ps.setBoolean(4, false);
+        	ps.setInt(5, task.getIDNum());
+        	ps.setString(6, task.getID());
         	
             int numAffected = ps.executeUpdate();
             ps.close();
@@ -145,11 +153,19 @@ public class TasksDAO {
     	boolean archived = resultSet.getBoolean("archived");
     	int idNum = resultSet.getInt("id");
     	
+    	Task generatedTask = new Task(TUUID, PUUID, name, complete, archived, idNum);
+    	//now we need to populate subtasks
+    	List<Task> subtasks = new ArrayList<Task>();
+    	
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM " + tblName + " WHERE PUUID = ?;");
+        ps.setString(1, PUUID);
+        ResultSet results = ps.executeQuery();
         
-        //Double value = resultSet.getDouble("value");
+        while(results.next()) {
+        	subtasks.add(generateTask(results));
+        }
         
-        
-        return new Task (TUUID, PUUID, name, complete, archived, idNum);
+        return generatedTask;
     }
 
 }

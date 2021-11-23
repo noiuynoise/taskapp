@@ -1,0 +1,1 @@
+{"lastDeploymentHandler":"com.cs3733.taskapp.app.CreateProjectHandler","lastInvokeHandler":null,"handlerMetadata":{"com.cs3733.taskapp.app.CreateProjectHandler":{"deployment":{"regionId":"us-east-2","awsLambdaFunctionName":"testDB","awsIamRoleName":"developer","awsS3BucketName":"3733taskapp","memory":0,"timeout":0},"invoke":null}},"lastInvokedHandlerDeployed":false}

@@ -16,9 +16,9 @@ public class DatabaseUtil {
 	// https://docs.aws.amazon.com/lambda/latest/dg/env_variables.html
 	//
 	// The above link shows how to do that.
-	public static String rdsMySqlDatabaseUrl;
-	public static String dbUsername;
-	public static String dbPassword;
+	public static String rdsMySqlDatabaseUrl;// = "taskapp.cwysctigob1y.us-east-2.rds.amazonaws.com";
+	public static String dbUsername;// = "admin";
+	public static String dbPassword;// = "AndrewColbyNikkiZeke";
 		
 	public final static String jdbcTag = "jdbc:mysql://";
 	public final static String rdsMySqlDatabasePort = "3306";
@@ -60,7 +60,8 @@ public class DatabaseUtil {
 		
 		try {
 			//System.out.println("start connecting......");
-			Class.forName("com.mysql.cj.jdbc.Driver"); 
+			//Class.forName("com.mysql.cj.jdbc.Driver"); 
+			DriverManager.setLoginTimeout(5);
 			conn = DriverManager.getConnection(
 					jdbcTag + rdsMySqlDatabaseUrl + ":" + rdsMySqlDatabasePort + "/" + schemaName + multiQueries,
 					dbUsername,

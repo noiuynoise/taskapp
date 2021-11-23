@@ -24,16 +24,16 @@ import com.cs3733.taskapp.http.Teammate;
 //import edu.wpi.cs.heineman.demo.http.CreateConstantResponse;
 //import edu.wpi.cs.heineman.demo.model.Constant;
 
-public class CreateProjectHandler implements RequestHandler<String, ProjectResponse> {
+public class ProjectViewHandler implements RequestHandler<String, ProjectResponse> {
 
     private AmazonS3 s3 = AmazonS3ClientBuilder.standard().build();
     
 	public static final String REAL_BUCKET = "TaskApp_Tasks/";
 
-    public CreateProjectHandler() {}
+    public ProjectViewHandler() {}
 
     // Test purpose only.
-    CreateProjectHandler(AmazonS3 s3) {
+    ProjectViewHandler(AmazonS3 s3) {
         this.s3 = s3;
     }
     
