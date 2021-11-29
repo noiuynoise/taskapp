@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.amazonaws.services.lambda.runtime.Context;
+import com.cs3733.taskapp.http.ProjectResponse;
 import com.cs3733.taskapp.http.Task;
 
 
@@ -21,7 +22,7 @@ public class TasksDAO {
 	
 	final String tblName = "TaskApp_Tasks";   // Exact capitalization
 	Context context;
-
+	
     public TasksDAO(Context context) {
     	this.context = context;
     	try  {
@@ -32,26 +33,20 @@ public class TasksDAO {
     		conn = null;
     	}
     }
-/*    
-    public Project getProject(String name) {
-    	
-    }
-*/    
-    public Task getTask(String taskID) throws Exception {
+    
+    public List<TaskEntry> getTaskByTUUID(String TUUID) throws Exception {
         
         try {
-            Task task = null;
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM " + tblName + " WHERE TUUID=?;"); //check
-            ps.setString(1,  taskID);
+            ps.setString(1,  TUUID);
             ResultSet resultSet = ps.executeQuery();
             
-            while (resultSet.next()) {
-                task = generateTask(resultSet);
-            }
+            List<TaskEntry> output = resultsToTasks(resultSet);
+            
             resultSet.close();
             ps.close();
             
-            return task;
+            return output;
 
         } catch (Exception e) {
         	e.printStackTrace();
@@ -59,17 +54,57 @@ public class TasksDAO {
         }
     }
     
-    public boolean updateTask(Task task) throws Exception {
+    public List<TaskEntry> getTaskByPUUID(String PUUID) throws Exception {
+        
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM " + tblName + " WHERE PUUID=?;"); //check
+            ps.setString(1,  PUUID);
+            ResultSet resultSet = ps.executeQuery();
+            
+            List<TaskEntry> output = resultsToTasks(resultSet);
+            
+            resultSet.close();
+            ps.close();
+            
+            return output;
+
+        } catch (Exception e) {
+        	e.printStackTrace();
+            throw new Exception("Failed in getting task: " + e.getMessage());
+        }
+    }
+    
+    public List<TaskEntry> getTaskByName(String name) throws Exception {
+        
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM " + tblName + " WHERE name=?;"); //check
+            ps.setString(1,  name);
+            ResultSet resultSet = ps.executeQuery();
+            
+            List<TaskEntry> output = resultsToTasks(resultSet);
+            
+            resultSet.close();
+            ps.close();
+            
+            return output;
+
+        } catch (Exception e) {
+        	e.printStackTrace();
+            throw new Exception("Failed in getting task: " + e.getMessage());
+        }
+    }
+    
+    public boolean updateTask(TaskEntry entry) throws Exception {
         try {
         	String query = "UPDATE " + tblName + " SET PUUID=? name=? complete=? archived=? id=?  WHERE TUUID=?;";
         	PreparedStatement ps = conn.prepareStatement(query);
         	
-        	ps.setString(1, task.getParentID());
-        	ps.setString(2, task.getName());
-        	ps.setBoolean(3, task.getComplete());
-        	ps.setBoolean(4, false);
-        	ps.setInt(5, task.getIDNum());
-        	ps.setString(6, task.getID());
+        	ps.setString(1, entry.PUUID);
+        	ps.setString(2, entry.name);
+        	ps.setBoolean(3, entry.complete);
+        	ps.setBoolean(4, entry.archived);
+        	ps.setInt(5, entry.id);
+        	ps.setString(6, entry.TUUID);
         	
             int numAffected = ps.executeUpdate();
             ps.close();
@@ -80,10 +115,10 @@ public class TasksDAO {
         }
     }
     
-    public boolean deleteTask(Task task) throws Exception {
+    public boolean deleteTask(String TUUID) throws Exception {
         try {
             PreparedStatement ps = conn.prepareStatement("DELETE FROM " + tblName + " WHERE TUUID = ?;");
-            ps.setString(1, task.getID());
+            ps.setString(1, TUUID);
             int numAffected = ps.executeUpdate();
             ps.close();
             
@@ -95,26 +130,24 @@ public class TasksDAO {
     }
 
 
-    public boolean addTask(Task task) throws Exception {
+    public boolean addTask(TaskEntry entry) throws Exception {
         try {
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM " + tblName + " WHERE TUUID = ?;");
-            ps.setString(1, task.getID());
+            ps.setString(1, entry.TUUID);
             ResultSet resultSet = ps.executeQuery();
             
             // already present?
-            while (resultSet.next()) {
-                Task c = generateTask(resultSet);
-                resultSet.close();
+            if (resultSet.next()) {
                 return false;
             }
 
             ps = conn.prepareStatement("INSERT INTO " + tblName + " (TUUID,PUUID,name,complete,archived,id) values(?,?,?,?,?,?);");
-        	ps.setString(1, task.getID());
-        	ps.setString(2, task.getParentID());
-        	ps.setString(3, task.getName());
-        	ps.setBoolean(4, task.getComplete());
-        	ps.setBoolean(5, false);
-        	ps.setInt(6, task.getIDNum());
+        	ps.setString(1, entry.TUUID);
+        	ps.setString(2, entry.PUUID);
+        	ps.setString(3, entry.name);
+        	ps.setBoolean(4, entry.complete);
+        	ps.setBoolean(5, entry.archived);
+        	ps.setInt(6, entry.id);
         	
             ps.execute();
             return true;
@@ -124,20 +157,19 @@ public class TasksDAO {
         }
     }
 
-    public List<Task> getAllTasks() throws Exception {
+    public List<TaskEntry> getAllTasks() throws Exception {
         
-        List<Task> allTasks = new ArrayList<>();
+        
         try {
             Statement statement = conn.createStatement();
             String query = "SELECT * FROM " + tblName + ";";
             ResultSet resultSet = statement.executeQuery(query);
 
-            while (resultSet.next()) {
-                Task c = generateTask(resultSet);
-                allTasks.add(c);
-            }
+            List<TaskEntry> allTasks = resultsToTasks(resultSet);
+            		
             resultSet.close();
             statement.close();
+            
             return allTasks;
 
         } catch (Exception e) {
@@ -145,27 +177,63 @@ public class TasksDAO {
         }
     }
     
-    private Task generateTask(ResultSet resultSet) throws Exception {
-    	String TUUID = resultSet.getString("TUUID");
-    	String PUUID = resultSet.getString("PUUID");
-    	String name  = resultSet.getString("name");
-    	boolean complete = resultSet.getBoolean("complete");
-    	boolean archived = resultSet.getBoolean("archived");
-    	int idNum = resultSet.getInt("id");
-    	
-    	Task generatedTask = new Task(TUUID, PUUID, name, complete, archived, idNum);
-    	//now we need to populate subtasks
-    	List<Task> subtasks = new ArrayList<Task>();
-    	
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM " + tblName + " WHERE PUUID = ?;");
-        ps.setString(1, PUUID);
-        ResultSet results = ps.executeQuery();
-        
-        while(results.next()) {
-        	subtasks.add(generateTask(results));
-        }
-        
-        return generatedTask;
+    public TaskEntry getProjectByName(String name) throws Exception{
+		List<TaskEntry> possibleProjects = getTaskByName(name);
+		for(TaskEntry entry: possibleProjects) {
+			if(!entry.PUUID.contentEquals("")) {
+				possibleProjects.remove(entry);
+			}
+		}
+		if(possibleProjects.size() != 1) {
+			throw new Exception("project does not exist or multiple projects with same name exist");
+		}
+		return possibleProjects.get(0);
     }
-
+    
+    public Task getTask(String TUUID) throws Exception {
+    	Task output = new Task();
+    	try {
+    		List<TaskEntry> entryList = getTaskByTUUID(TUUID);
+    		if(entryList.size() != 1) {
+    			throw new Exception("More than one Task with TUUID exists or Task with TUUID does not exist");
+    		}
+    		TaskEntry entry = entryList.get(0);
+    		output.setID(entry.TUUID);
+    		output.setParentID(entry.PUUID);
+    		output.setName(entry.name);
+    		output.setComplete(entry.complete);
+    		output.setIDNum(entry.id);
+    		ArrayList<Task> subtasks = new ArrayList<Task>();
+    		for(TaskEntry subtask: getTaskByPUUID(entry.TUUID)) {
+    			subtasks.add(getTask(subtask.TUUID));
+    		}
+    		output.setSubtasks(subtasks.toArray(new Task[0]));
+    		return output;
+    	}catch (Exception e){
+    		String errorText = "failed to retrieve Task from TUUID: " + TUUID + " Error: " + e.getMessage();
+    		this.context.getLogger().log(errorText);
+    		throw new Exception(errorText);
+    	}
+    	
+    }
+    
+    private List<TaskEntry> resultsToTasks(ResultSet results) throws SQLException{
+    	
+    	List<TaskEntry> output = new ArrayList<TaskEntry>();
+    	
+    	while(results.next()) {
+    		
+        	String TUUID = results.getString("TUUID");
+        	String PUUID = results.getString("PUUID");
+        	String name  = results.getString("name");
+        	boolean complete = results.getBoolean("complete");
+        	boolean archived = results.getBoolean("archived");
+        	int idNum = results.getInt("id");
+        	
+        	output.add(new TaskEntry(TUUID, PUUID, name, complete, archived, idNum));
+        	
+    	}
+    	
+    	return output;
+    }
 }

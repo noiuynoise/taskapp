@@ -2,6 +2,8 @@ package com.cs3733.taskapp.app;
 
 import java.io.ByteArrayInputStream;
 import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
@@ -15,10 +17,13 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3Object;
+import com.cs3733.taskapp.db.TaskEntry;
 import com.cs3733.taskapp.db.TasksDAO;
+import com.cs3733.taskapp.db.TeammateDAO;
 import com.cs3733.taskapp.http.ProjectResponse;
 import com.cs3733.taskapp.http.Task;
 import com.cs3733.taskapp.http.Teammate;
+
 
 //import edu.wpi.cs.heineman.demo.db.ConstantsDAO;
 //import edu.wpi.cs.heineman.demo.http.CreateConstantResponse;
@@ -40,23 +45,38 @@ public class ProjectViewHandler implements RequestHandler<String, ProjectRespons
     
     @Override
     public ProjectResponse handleRequest(String input, Context context) {
-//    	logger = context.getLogger();
-//		logger.log(req.toString());
-
     	
-        context.getLogger().log("Received name: " + input);
+        context.getLogger().log("Getting project view for Project: " + input);
         
-    	Task newTask = new Task(UUID.randomUUID().toString(), "", input, false, false, 0);
-    	
-    	TasksDAO dao = new TasksDAO(context);
+        TasksDAO taskdao = new TasksDAO(context);
+        TeammateDAO teamdao = new TeammateDAO(context);
+        
     	try {
-	    	if(!dao.addTask(newTask)) {
-	    		throw new Exception("a project of this UUID already exists"); //need to check for duplicate names too later
-	    	}
-	    	return new ProjectResponse(input, new Teammate[0], new Task[0], false);
+    		List<TaskEntry> possibleProjects = taskdao.getTaskByName(input);
+    		for(TaskEntry entry: possibleProjects) {
+    			if(!entry.PUUID.contentEquals("")) {
+    				possibleProjects.remove(entry);
+    			}
+    		}
+    		if(possibleProjects.size() != 1) {
+    			throw new Exception("project does not exist or multiple projects with same name exist");
+    		}
+    		TaskEntry projectEntry = possibleProjects.get(0);
+    		
+    		ProjectResponse response = new ProjectResponse();
+    		response.setArchived(projectEntry.archived);
+    		response.setProjectID(projectEntry.TUUID);
+    		
+    		Task projectTask = taskdao.getTask(projectEntry.TUUID);
+    		
+    		response.setTasks(projectTask.getSubtasks());
+    		//response.setTeammates(teamdao.getTeammateByTUUID(projectEntry.TUUID).toArray(new Teammate[0]));
+    		
+    		return response;
+    		
     	}catch(Exception e) {
     		context.getLogger().log("Error: "+e.getMessage());
-    		return new ProjectResponse(400);
+    		throw new RuntimeException(e.getMessage());
     	}
     }
 }

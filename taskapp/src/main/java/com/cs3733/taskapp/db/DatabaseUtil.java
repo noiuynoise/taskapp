@@ -61,7 +61,7 @@ public class DatabaseUtil {
 		try {
 			//System.out.println("start connecting......");
 			//Class.forName("com.mysql.cj.jdbc.Driver"); 
-			DriverManager.setLoginTimeout(5);
+			//DriverManager.setLoginTimeout(5);
 			conn = DriverManager.getConnection(
 					jdbcTag + rdsMySqlDatabaseUrl + ":" + rdsMySqlDatabasePort + "/" + schemaName + multiQueries,
 					dbUsername,

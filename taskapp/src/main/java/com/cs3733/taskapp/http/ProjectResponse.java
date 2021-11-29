@@ -7,7 +7,6 @@ public class ProjectResponse {
 	Task tasks[];
 	Boolean archived;
 	String projectid;
-	int httpCode;
 
 	public Teammate[] getTeammates() { return teammates; }
 	public void setTeammates(Teammate[] teammates) { this.teammates = teammates; }
@@ -30,10 +29,6 @@ public class ProjectResponse {
 		this.tasks = tasks;
 		this.archived = archived;
 		this.projectid = projectid;
-		this.httpCode = 200;
-	}
-	public ProjectResponse(int httpError) {
-		this.httpCode = httpError;
 	}
 	
 	public ProjectResponse() {

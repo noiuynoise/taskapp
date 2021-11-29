@@ -2,6 +2,7 @@ package com.cs3733.taskapp.app;
 
 import java.io.ByteArrayInputStream;
 import java.util.UUID;
+import java.util.List;
 
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
@@ -15,6 +16,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3Object;
+import com.cs3733.taskapp.db.TaskEntry;
 import com.cs3733.taskapp.db.TasksDAO;
 import com.cs3733.taskapp.http.ProjectResponse;
 import com.cs3733.taskapp.http.Task;
@@ -40,23 +42,27 @@ public class CreateProjectHandler implements RequestHandler<String, ProjectRespo
     
     @Override
     public ProjectResponse handleRequest(String input, Context context) {
-//    	logger = context.getLogger();
-//		logger.log(req.toString());
 
-    	
-        context.getLogger().log("Received name: " + input);
+        context.getLogger().log("Creating Project: " + input);
         
-    	Task newTask = new Task(UUID.randomUUID().toString(), "", input, false, false, 0);
+        TaskEntry newEntry = new TaskEntry(UUID.randomUUID().toString(), "", input, false, false, 0);
     	
     	TasksDAO dao = new TasksDAO(context);
     	try {
-	    	if(!dao.addTask(newTask)) {
-	    		throw new Exception("a project of this UUID already exists"); //need to check for duplicate names too later
+    		//check for duplicates of same project name
+    		List<TaskEntry> duplicateProjects = dao.getTaskByName(input);
+    		for(TaskEntry project : duplicateProjects) {
+    			if(project.PUUID.equals("")) {
+    				throw new Exception("a project with this name already exists");
+    			}
+    		}
+	    	if(!dao.addTask(newEntry)) {
+	    		throw new Exception("a project of this TUUID already exists"); //need to check for duplicate names too later
 	    	}
 	    	return new ProjectResponse(input, new Teammate[0], new Task[0], false);
     	}catch(Exception e) {
     		context.getLogger().log("Error: "+e.getMessage());
-    		return new ProjectResponse(400);
+    		throw new RuntimeException(e.getMessage()); //runtime exception means 400 response
     	}
     }
 }
