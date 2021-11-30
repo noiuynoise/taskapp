@@ -11,7 +11,7 @@ function handleViewProjectClick(projectName) {
             console.log ("XHR:" + xhr);
             processProjectViewResponse(xhr);
         } else {
-            processProjectViewResponse("N/A");
+            console.log("400")
         }
     };
 }
@@ -20,7 +20,7 @@ function processProjectViewResponse(response) {
     console.log("response is: " + response)
     var js = JSON.parse(response.response);
 
-    var id = js["projectID"];
+    var id = js["projectName"];
 
     if (response.status == 200) {
         location.href="projectview.html#" + id

@@ -4,7 +4,8 @@
  */
 function processCreateResponse(projectName, response) {
     if (response.status == 200) {
-        location.href="projectview.html"
+        console.log(response.status)
+        handleViewProjectClick(projectName)
     } else {
         document.getElementById("errorText").innerHTML = "Please try a different project name"
     }

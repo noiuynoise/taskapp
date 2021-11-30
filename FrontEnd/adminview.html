@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <title>TaskApp Admin Page</title>
     <link rel="stylesheet" href="style.css">
-    <script type='text/javascript' src="createProject.js"></script>
+    <link rel="shortcut icon" type="image/png" href="lola.JPG"/>
+    <script type='text/javascript' src="viewAdmin.js"></script>
+    <script type='text/javascript' src="api.js"></script>
+
 </head>
-<body>
+<body onload="handleAdminViewRequest()">
 
 <h1 id="TitleHeader">Administrator Page</h1>
 
 <div id="tableDiv">
-    <table id="projectTable">
+    <table id="projectTable" width=500px>
         <tr>
             <th>Project</th>
+            <th>ProjectID</th>
             <th>Percent</th>
             <th>Archive</th>
             <th>Delete</th>
         </tr>
     </table>
-    <button id="addRowBtn" type="button" onClick="addRow()">Add New Row</button>
 </div>
 
 <div id="returnDiv">
