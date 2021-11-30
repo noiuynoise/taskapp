@@ -27,6 +27,22 @@ public class Task {
 	public int getIDNum () {return idNum;}
 	public void setIDNum (int idNum) {this.idNum = idNum;}
 	
+	public double getCompletionPercent() {
+		if(subtasks.length == 0) {
+			if(complete) {
+				return 100.0;
+			}else {
+				return 0.0;
+			}
+		}else{
+			double total = 0.0;
+			for(Task t:subtasks) {
+				total += t.getCompletionPercent();
+			}
+			return total / subtasks.length;
+		}
+	}
+	
 	public String toString() {
 		return "Task(" + name + ", " + id + ", " + complete + ", " + parentID +")";
 	}
