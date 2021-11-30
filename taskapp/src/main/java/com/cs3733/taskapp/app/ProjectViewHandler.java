@@ -65,7 +65,8 @@ public class ProjectViewHandler implements RequestHandler<String, ProjectRespons
     		
     		ProjectResponse response = new ProjectResponse();
     		response.setArchived(projectEntry.archived);
-    		response.setProjectID(projectEntry.TUUID);
+    		response.setProjectTUUID(projectEntry.TUUID);
+    		response.setProjectName(projectEntry.name);
     		
     		Task projectTask = taskdao.getTask(projectEntry.TUUID);
     		

@@ -6,7 +6,8 @@ public class ProjectResponse {
 	Teammate teammates[];
 	Task tasks[];
 	Boolean archived;
-	String projectid;
+	String TUUID;
+	String name;
 
 	public Teammate[] getTeammates() { return teammates; }
 	public void setTeammates(Teammate[] teammates) { this.teammates = teammates; }
@@ -17,18 +18,22 @@ public class ProjectResponse {
 	public Boolean getArchived() { return archived; }
 	public void setArchived(Boolean archived) { this.archived = archived; }
 	
-	public String getProjectID() { return projectid; }
-	public void setProjectID(String projectid) { this.projectid = projectid; }
+	public String getProjectTUUID() { return TUUID; }
+	public void setProjectTUUID(String TUUID) { this.TUUID = TUUID; }
+	
+	public String getProjectName() { return name; }
+	public void setProjectName(String name) { this.name = name; }
 
 	public String toString() {
-		return "Add(" + archived + "," + projectid + ")";
+		return "Add(" + archived + "," + TUUID + ")";
 	}
 	
-	public ProjectResponse( String projectid, Teammate[] teammates, Task[] tasks, Boolean archived) {
+	public ProjectResponse(String name, String TUUID, Teammate[] teammates, Task[] tasks, Boolean archived) {
 		this.teammates = teammates;
 		this.tasks = tasks;
 		this.archived = archived;
-		this.projectid = projectid;
+		this.TUUID = TUUID;
+		this.name = name;
 	}
 	
 	public ProjectResponse() {

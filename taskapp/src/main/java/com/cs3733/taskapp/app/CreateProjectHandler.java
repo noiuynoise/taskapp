@@ -59,7 +59,7 @@ public class CreateProjectHandler implements RequestHandler<String, ProjectRespo
 	    	if(!dao.addTask(newEntry)) {
 	    		throw new Exception("a project of this TUUID already exists"); //need to check for duplicate names too later
 	    	}
-	    	return new ProjectResponse(input, new Teammate[0], new Task[0], false);
+	    	return new ProjectResponse(input, newEntry.TUUID, new Teammate[0], new Task[0], false);
     	}catch(Exception e) {
     		context.getLogger().log("Error: "+e.getMessage());
     		throw new RuntimeException(e.getMessage()); //runtime exception means 400 response
