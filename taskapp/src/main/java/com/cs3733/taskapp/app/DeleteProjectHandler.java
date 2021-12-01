@@ -13,7 +13,7 @@ import com.cs3733.taskapp.http.ProjectResponse;
 import com.cs3733.taskapp.http.Task;
 import com.cs3733.taskapp.http.Teammate;
 
-public class DeleteProjectHandler  implements RequestHandler<String, ProjectResponse> {
+public class DeleteProjectHandler  implements RequestHandler<String, Boolean> {
 
     private AmazonS3 s3 = AmazonS3ClientBuilder.standard().build();
     
@@ -28,25 +28,18 @@ public class DeleteProjectHandler  implements RequestHandler<String, ProjectResp
     
     
     @Override
-    public ProjectResponse handleRequest(String input, Context context) {
+    public Boolean handleRequest(String input, Context context) {
 
         context.getLogger().log("Deleting Project: " + input);
         
-        TaskEntry newEntry = new TaskEntry(UUID.randomUUID().toString(), "", input, false, false, 0);
     	
     	TasksDAO dao = new TasksDAO(context);
     	try {
-//    		//check for duplicates of same project name
-//    		List<TaskEntry> duplicateProjects = dao.getTaskByName(input);
-//    		for(TaskEntry project : duplicateProjects) {
-//    			if(project.PUUID.equals("")) {
-//    				throw new Exception("a project with this name already exists");
-//    			}
-//    		}
-//	    	if(!dao.addTask(newEntry)) {
-//	    		throw new Exception("a project of this TUUID already exists"); //need to check for duplicate names too later
-//	    	}
-	    	return new ProjectResponse(input, newEntry.TUUID, new Teammate[0], new Task[0], false);
+    		
+    		boolean status = dao.deleteTask(input);
+    		
+    		
+	    	return status;
     	}catch(Exception e) {
     		context.getLogger().log("Error: "+e.getMessage());
     		throw new RuntimeException(e.getMessage()); //runtime exception means 400 response
