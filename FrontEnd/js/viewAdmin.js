@@ -39,7 +39,7 @@ function processAdminViewResponse(response) {
             deleteButton.id = "deleteButton";
             deleteButton.value = "Delete";
             //TODO : make this call the delete project request from the api
-            //deleteButton.onclick = (function(entry) {return function() {chooseUser(entry);}})(entry);
+            deleteButton.onclick = function() {handleDeleteClick(x['projectID'])};
             newDeleteCell.appendChild(deleteButton);
 
             var archiveButton = document.createElement('input');
