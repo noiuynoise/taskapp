@@ -38,7 +38,10 @@ public class DeleteProjectHandler  implements RequestHandler<String, Boolean> {
     		
     		boolean status = dao.deleteTask(input);
     		
-    		
+    		if (status == false)
+    		{
+    			throw new Exception("Project does not exist");
+    		}
 	    	return status;
     	}catch(Exception e) {
     		context.getLogger().log("Error: "+e.getMessage());
