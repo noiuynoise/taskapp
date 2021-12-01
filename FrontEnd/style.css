@@ -20,7 +20,7 @@
 #InputDiv{
     width: 398px;
     height: 127px;
-    background-image: url("textinput.PNG");
+    background-image: url("imgsources/textinput.PNG");
     text-align: center;
     margin: auto;
     display: flex;
@@ -54,14 +54,14 @@
 }
 
 #openButton{
-    background-image: url("openButton.PNG");
+    background-image: url("imgsources/openButton.PNG");
     width: 170px;
     height: 58px;
     margin-right: 10px;
 }
 
 #createNewButton{
-    background-image: url("createNewButton.PNG");
+    background-image: url("imgsources/createNewButton.PNG");
     width: 180px;
     height: 58px;
 }

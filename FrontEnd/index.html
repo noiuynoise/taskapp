@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>TaskApp</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" type="image/png" href="lola.JPG"/>
-    <script type='text/javascript' src="createProject.js"></script>
-    <script type='text/javascript' src="api.js"></script>
-    <script type='text/javascript' src="viewProject.js"></script>
+    <link rel="shortcut icon" type="image/png" href="imgsources/lola.JPG"/>
+    <script type='text/javascript' src="js/createProject.js"></script>
+    <script type='text/javascript' src="js/api.js"></script>
+    <script type='text/javascript' src="js/viewProject.js"></script>
+    <script type='text/javascript' src="js/indexButtonHandler.js"></script>
 
 </head>
 <body>
@@ -19,7 +20,7 @@
 </div>
 
 <div id="ButtonDiv">
-    <button type="button" id="openButton"></button>
+    <button type="button" id="openButton" onClick="Javascript:handleViewProjectClick()"></button>
     <button type="button" id="createNewButton" onClick="Javascript:handleCreateClick(this)"></button>
 </div>
 
