@@ -2,11 +2,14 @@ function processProjectViewResponse(response) {
     console.log("response is: " + response)
     var js = JSON.parse(response.response);
 
-    var id = js["projectName"];
+    var projectName = js["projectName"];
+    var projectID = js["projectTUUID"]
 
     if (response.status == 200) {
-        document.getElementById("projectNameTitle").innerHTML = id
-        document.title = id
+        document.getElementById("projectNameTitle").innerHTML = projectName
+        document.getElementById("invisiblePIDBox").innerHTML = projectID
+        console.log(projectID)
+        document.title = projectName
         document.getElementById("responseBody").innerHTML = response.response
     } else {
         console.log("400")
