@@ -1,14 +1,16 @@
-function handleAddTeammateClick() {
+function handleAddTaskClick() {
     var projectID = document.getElementById("invisiblePIDBox").innerHTML
-    var teammateName = document.getElementById("addTeammateText").value
+    var taskName = document.getElementById("addTaskText").value
+    var taskArray = [];
+    taskArray.push(taskName)
     var data = {};
     console.log(projectID)
-    data["name"] = teammateName;
+    data["tasks"] = taskArray;
     data["projectid"] = projectID;
     var js = JSON.stringify(data);
     console.log("JS:" + js);
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", add_teammate_url, true);
+    xhr.open("POST", add_task_url, true);
 
 
     // send the collected data as JSON
@@ -21,13 +23,18 @@ function handleAddTeammateClick() {
 
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log ("XHR:" + xhr.responseText);
-            processAddTeammateResponse(teammateName, xhr);
+            processAddTaskResponse(taskName, xhr);
         } else {
 
         }
     };
 }
 
-function processAddTeammateResponse(teammateName, response) {
-    location.reload()
+function processAddTaskResponse(teammateName, response) {
+    if (response.status == 200) {
+        location.reload()
+    } else {
+        console.log(400)
+    }
+
 }
