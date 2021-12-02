@@ -44,17 +44,31 @@ public class TeamViewHandler implements RequestHandler<String, TeamViewResponse>
     		
     		TeamViewResponse response = new TeamViewResponse();
     		
+    		Task projectTask = taskdao.getTask(projectEntry.TUUID);
+    		List<String> allTUUID = projectTask.getAllTUUID();
     		List<TeammateEntry> teammateEntries = teamdao.getTeammateByTUUID(projectEntry.TUUID);
     		List<Teammate> teammates = new ArrayList<Teammate>();
     		
-    		/*
-    		for(TeammateEntry teammateEntry: teammateEntries) {
-    			Teammate teammate = new Teammate();
-    			teammate.setName(name);
+    		for(TeammateEntry teammate:teammateEntries) {
+    			Teammate newTeammate = new Teammate();
+    			newTeammate.setName(teammate.name);
+    			
+    			List<String> assignedTasks = new ArrayList<String>();
+    			List<TeammateEntry> teamTasks = teamdao.getTeammateByName(teammate.name);
+    			
+    			for(TeammateEntry task:teamTasks) {
+    				if(allTUUID.contains(task.TUUID)) {
+    					assignedTasks.add(task.TUUID);
+    				}
+    			}
+    			
+    			newTeammate.setTasks(assignedTasks.toArray(new String[0]));
+    			
+    			teammates.add(newTeammate);
     		}
-    		*/
+    		
     		response.setProjectID(projectEntry.TUUID);
-    		//response.setTeammates(teammates.toArray(new TeammateEntry[0]));
+    		response.setTeammates(teammates.toArray(new Teammate[0]));
     		
     		return response;
     		

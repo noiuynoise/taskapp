@@ -8,4 +8,8 @@ public class TeammateEntry {
 		this.name = name;
 		this.TUUID = TUUID;
 	}
+	
+	public String toString() {
+		return "Teammate(" + this.name +  ", " + this.TUUID + ")";
+	}
 }

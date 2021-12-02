@@ -1,5 +1,8 @@
 package com.cs3733.taskapp.http;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Task {
 	
 	String name;
@@ -26,6 +29,15 @@ public class Task {
 	
 	public int getIDNum () {return idNum;}
 	public void setIDNum (int idNum) {this.idNum = idNum;}
+	
+	public List<String> getAllTUUID(){
+		List<String> output = new ArrayList<String>();
+		output.add(this.id);
+		for(Task subtask:this.subtasks) {
+			output.addAll(subtask.getAllTUUID());
+		}
+		return output;
+	}
 	
 	public double getCompletionPercent() {
 		if(subtasks.length == 0) {

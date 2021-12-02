@@ -96,7 +96,7 @@ public class TasksDAO {
     
     public boolean updateTask(TaskEntry entry) throws Exception {
         try {
-        	String query = "UPDATE " + tblName + " SET PUUID=? name=? complete=? archived=? id=?  WHERE TUUID=?;";
+        	String query = "UPDATE " + tblName + " SET PUUID=?, name=?, complete=?, archived=?, id=?  WHERE TUUID=?;";
         	PreparedStatement ps = conn.prepareStatement(query);
         	
         	ps.setString(1, entry.PUUID);

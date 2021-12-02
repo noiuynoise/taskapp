@@ -24,6 +24,24 @@ public class TeammateDAO {
     	}
     }
     
+    public boolean addTeammate(TeammateEntry entry) throws Exception{
+    	PreparedStatement ps = conn.prepareStatement("SELECT * FROM " + tblName + " WHERE Teammate = ? AND TUUID = ?;");
+        ps.setString(1, entry.name);
+        ps.setString(2, entry.TUUID);
+        ResultSet resultSet = ps.executeQuery();
+    	
+        if (resultSet.next()) {
+            return false;
+        }
+
+        ps = conn.prepareStatement("INSERT INTO " + tblName + " (TUUID,Teammate) values(?,?);");
+    	ps.setString(1, entry.TUUID);
+    	ps.setString(2, entry.name);
+    	
+        ps.execute();
+        return true;
+    }
+    
     public List<TeammateEntry> getTeammateByTUUID(String TUUID) throws Exception {
         
         try {

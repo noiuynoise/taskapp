@@ -20,6 +20,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.cs3733.taskapp.db.TaskEntry;
 import com.cs3733.taskapp.db.TasksDAO;
 import com.cs3733.taskapp.db.TeammateDAO;
+import com.cs3733.taskapp.db.TeammateEntry;
 import com.cs3733.taskapp.http.ProjectResponse;
 import com.cs3733.taskapp.http.Task;
 import com.cs3733.taskapp.http.Teammate;
@@ -71,7 +72,36 @@ public class ProjectViewHandler implements RequestHandler<String, ProjectRespons
     		Task projectTask = taskdao.getTask(projectEntry.TUUID);
     		
     		response.setTasks(projectTask.getSubtasks());
-    		//response.setTeammates(teamdao.getTeammateByTUUID(projectEntry.TUUID).toArray(new Teammate[0]));
+    		
+    		List<String> allTUUID = projectTask.getAllTUUID();
+    		
+    		//context.getLogger().log(allTUUID.toString());
+    		
+    		TeammateEntry teamList[] = teamdao.getTeammateByTUUID(projectEntry.TUUID).toArray(new TeammateEntry[0]);
+    		
+    		//context.getLogger().log(teamList.toString());
+    		
+    		List<Teammate> teammateList = new ArrayList<Teammate>();
+    		
+    		for(TeammateEntry teammate:teamList) {
+    			Teammate newTeammate = new Teammate();
+    			newTeammate.setName(teammate.name);
+    			
+    			List<String> assignedTasks = new ArrayList<String>();
+    			List<TeammateEntry> teamTasks = teamdao.getTeammateByName(teammate.name);
+    			
+    			for(TeammateEntry task:teamTasks) {
+    				if(allTUUID.contains(task.TUUID)) {
+    					assignedTasks.add(task.TUUID);
+    				}
+    			}
+    			
+    			newTeammate.setTasks(assignedTasks.toArray(new String[0]));
+    			
+    			teammateList.add(newTeammate);
+    		}
+    		
+    		response.setTeammates(teammateList.toArray(new Teammate[0]));
     		
     		return response;
     		

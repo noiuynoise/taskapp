@@ -18,9 +18,12 @@ import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3Object;
 import com.cs3733.taskapp.db.TaskEntry;
 import com.cs3733.taskapp.db.TasksDAO;
+import com.cs3733.taskapp.db.TeammateDAO;
+import com.cs3733.taskapp.db.TeammateEntry;
 import com.cs3733.taskapp.http.ProjectResponse;
 import com.cs3733.taskapp.http.Task;
 import com.cs3733.taskapp.http.Teammate;
+import com.cs3733.taskapp.http.TeammateRequest;
 
 //import edu.wpi.cs.heineman.demo.db.ConstantsDAO;
 //import edu.wpi.cs.heineman.demo.http.CreateConstantResponse;

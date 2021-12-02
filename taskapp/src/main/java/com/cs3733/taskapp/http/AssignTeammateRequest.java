@@ -1,28 +1,23 @@
 package com.cs3733.taskapp.http;
 
 public class AssignTeammateRequest {
-	String projectid;
-	String taskid;
-	Boolean status;
-	
-	public String getProjectID() { return projectid; }
-	public void setProjectID(String projectid) { this.projectid = projectid; }
+	public String taskid;
+	public String teammate;
 
 	public String getTaskID() { return taskid; }
 	public void setTaskID(String taskid) { this.taskid = taskid; }
 	
-	public Boolean getStatus() {return status; }
-	public void setTaskID(Boolean status) { this.status = status; }
+	public String getTeammate() {return teammate; }
+	public void setTeammate(String teammate) { this.teammate = teammate; }
 
 	
 	public String toString() {
-		return "AssignTeammateRequest(" + projectid + "," + taskid +  "," + status + ")";
+		return "AssignTeammateRequest(" + taskid +  "," + teammate + ")";
 	}
 	
-	public AssignTeammateRequest(String projectid, String taskid, Boolean status) {
-		this.projectid = projectid;
+	public AssignTeammateRequest(String taskid, String teammate) {
 		this.taskid = taskid;
-		this.status = status;
+		this.teammate = teammate;
 	}
 	
 	public AssignTeammateRequest() {

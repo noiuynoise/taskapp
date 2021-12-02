@@ -1,9 +1,8 @@
 package com.cs3733.taskapp.http;
 
 public class TeammateRequest {
-	String name;
-	String projectid;
-
+	public String name;
+	public String projectid;
 
 	public String getName() { return name; }
 	public void setTeammates(String name) { this.name = name; }

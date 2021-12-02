@@ -1,11 +1,11 @@
 package com.cs3733.taskapp.http;
 
 public class AddTaskRequest {
-	String projectid;
-	Task tasks[];
+	public String projectid;
+	public String tasks[];
 
-	public Task[] getTasks() { return tasks; }
-	public void setTasks(Task[] tasks) { this.tasks = tasks; }
+	public String[] getTasks() { return tasks; }
+	public void setTasks(String[] tasks) { this.tasks = tasks; }
 	
 	public String getProjectID() { return projectid; }
 	public void setProjectID(String projectid) { this.projectid = projectid; }
@@ -14,7 +14,7 @@ public class AddTaskRequest {
 		return "AddTaskResponse(" + projectid +  ")";
 	}
 	
-	public AddTaskRequest(String projectid, Task[] tasks) {
+	public AddTaskRequest(String projectid, String[] tasks) {
 		this.projectid = projectid;
 		this.tasks = tasks;
 	}
