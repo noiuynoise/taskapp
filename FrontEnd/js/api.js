@@ -7,3 +7,4 @@ var project_view_url    = base_url + "projectview/";   // GET
 var admin_view_url = base_url + "listprojects" //GET
 var delete_project_url = base_url + "deleteproject" //POST
 var add_teammate_url = base_url + "addteammate" //POST
+var add_task_url = base_url + "addtask" //POST
