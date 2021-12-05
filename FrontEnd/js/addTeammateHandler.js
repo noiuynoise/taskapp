@@ -1,18 +1,7 @@
 function handleAddTeammateClick() {
     var projectID = document.getElementById("invisiblePIDBox").innerHTML
     var teammateName = document.getElementById("addTeammateText").value
-    var data = {};
-    console.log(projectID)
-    data["name"] = teammateName;
-    data["projectid"] = projectID;
-    var js = JSON.stringify(data);
-    console.log("JS:" + js);
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", add_teammate_url, true);
-
-
-    // send the collected data as JSON
-    xhr.send(js);
+    var xhr = makeTwoFieldAPICall(teammateName, projectID, "name", "projectid", add_teammate_url)
 
     // This will process results and update HTML as appropriate.
     xhr.onloadend = function () {
@@ -29,5 +18,9 @@ function handleAddTeammateClick() {
 }
 
 function processAddTeammateResponse(teammateName, response) {
-    location.reload()
+    if (response.status == 200) {
+        location.reload()
+    } else {
+        console.log(400)
+    }
 }

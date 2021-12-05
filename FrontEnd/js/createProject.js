@@ -11,7 +11,7 @@ function processCreateResponse(projectName, response) {
     }
 }
 
-function handleCreateClick(e) {
+function handleCreateClick() {
     if (document.getElementById("projectName").value != "") {
         var projectName = document.getElementById("projectName").value
         console.log("project name is " + projectName)
