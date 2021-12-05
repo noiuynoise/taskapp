@@ -50,7 +50,10 @@ public class TeammateDAO {
             ps.setString(2, TUUID);
             int numAffected = ps.executeUpdate();
             ps.close();
-            
+            if (numAffected == 0)
+            {
+            	throw new Exception("Cannot delete teammate that does not exist");
+            }
             return (numAffected == 1);
 
         } catch (Exception e) {
