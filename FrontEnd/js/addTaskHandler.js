@@ -3,18 +3,7 @@ function handleAddTaskClick() {
     var taskName = document.getElementById("addTaskText").value
     var taskArray = [];
     taskArray.push(taskName)
-    var data = {};
-    console.log(projectID)
-    data["tasks"] = taskArray;
-    data["projectid"] = projectID;
-    var js = JSON.stringify(data);
-    console.log("JS:" + js);
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", add_task_url, true);
-
-
-    // send the collected data as JSON
-    xhr.send(js);
+    var xhr = makeTwoFieldAPICall(taskArray, projectID, "tasks", "projectid", add_task_url)
 
     // This will process results and update HTML as appropriate.
     xhr.onloadend = function () {

@@ -9,17 +9,28 @@
     <script type='text/javascript' src="js/api.js"></script>
     <script type='text/javascript' src="js/addTeammateHandler.js"></script>
     <script type='text/javascript' src="js/addTaskHandler.js"></script>
+    <script type='text/javascript' src="js/utils.js"></script>
+    <script type='text/javascript' src="js/removeTeammateHandler.js"></script>
 </head>
 <body onload="loadProjectView()">
 <h1 id="projectNameTitle">Loading...</h1>
 <p id="responseBody"></p>
 <p id="invisiblePIDBox"></p>
-<input type="text" id="addTeammateText">
+<input type="text" id="addTeammateText" placeholder="Teammate to add">
 <button id="submitAddTeammate" onclick="handleAddTeammateClick()">Add Teammate</button>
 
 <div>
-    <input type="text" id="addTaskText">
+    <input type="text" id="addTaskText" placeholder="Task to add">
     <button id="submitAddTask" onclick="handleAddTaskClick()">Add Task</button>
+</div>
+
+<div>
+    <input type="text" id="removeTeammateText" placeholder="Teammate to remove">
+    <button id="submitRemoveTeammate" onclick="handleRemoveTeammateClick()">Remove Teammate</button>
+</div>
+
+<div id="errorDiv">
+    <p id="teammateDoesNotExistErrorText"></p>
 </div>
 
 </body>
