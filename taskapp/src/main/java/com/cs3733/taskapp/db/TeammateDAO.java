@@ -42,6 +42,23 @@ public class TeammateDAO {
         return true;
     }
     
+    
+    public boolean removeTeammate(String name, String TUUID) throws Exception{
+        try {
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM " + tblName + " WHERE Teammate = ? AND TUUID = ?;");
+            ps.setString(1, name);
+            ps.setString(2, TUUID);
+            int numAffected = ps.executeUpdate();
+            ps.close();
+            
+            return (numAffected == 1);
+
+        } catch (Exception e) {
+            throw new Exception("Failed to delete task: " + e.getMessage());
+        }
+    	
+    }
+    
     public List<TeammateEntry> getTeammateByTUUID(String TUUID) throws Exception {
         
         try {
