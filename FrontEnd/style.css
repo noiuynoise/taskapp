@@ -157,3 +157,7 @@
 #invisiblePIDBox {
     visibility: hidden;
 }
+
+#removeTeammateDiv {
+    padding-top: 10px;
+}
