@@ -11,6 +11,8 @@
     <script type='text/javascript' src="js/addTaskHandler.js"></script>
     <script type='text/javascript' src="js/utils.js"></script>
     <script type='text/javascript' src="js/removeTeammateHandler.js"></script>
+    <script type='text/javascript' src="js/viewTeamView.js"></script>
+
 </head>
 <body onload="loadProjectView()">
 <h1 id="projectNameTitle">Loading...</h1>
@@ -31,6 +33,10 @@
 
 <div id="errorDiv">
     <p id="teammateDoesNotExistErrorText"></p>
+</div>
+
+<div id="teamViewDiv">
+    <button id="teamViewButton" type="button" style="background-color:#4e4ef1" onclick="handleTeamViewClick()">Team View</button>
 </div>
 
 </body>

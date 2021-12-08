@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team View</title>
+    <link rel="stylesheet" href="style.css">
+    <script type='text/javascript' src="js/api.js"></script>
+    <script type='text/javascript' src="js/viewTeamView.js"></script>
+
+</head>
+<body onload="loadTeamView()">
+<h1 id="projectNameTitle">Loading...</h1>
+<div id="teamTableDiv">
+    <table id="teamTable">
+        <tr>
+            <th>Teammate</th>
+            <th>Tasks</th>
+        </tr>
+    </table>
+</div>
+
+<div id="teamViewReturnDiv">
+    <button id="teamViewReturnButton" type="button" style="background-color:#4e4ef1" onclick=handleTeamViewReturnClick()>Return to Project View</button>
+</div>
+</body>
+</html>
