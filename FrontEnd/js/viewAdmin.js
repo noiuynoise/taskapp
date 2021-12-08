@@ -57,6 +57,7 @@ function processAdminViewResponse(response) {
             newArchivedCell.appendChild(archiveButton);
 
             newProjectCell.innerHTML = x['projectName']
+            newProjectCell.style.fontFamily = "Comic Sans MS"
             newProjectIDCell.innerHTML = x['projectID'].slice(0,8)
             newCompletionCell.innerHTML = x['completion'] + "%"
         })
