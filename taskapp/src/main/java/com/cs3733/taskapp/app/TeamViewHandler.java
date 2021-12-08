@@ -58,10 +58,10 @@ public class TeamViewHandler implements RequestHandler<String, TeamViewResponse>
     			
     			for(TeammateEntry task:teamTasks) {
     				if(allTUUID.contains(task.TUUID)) {
-    					assignedTasks.add(task.TUUID);
+    					assignedTasks.add(taskdao.getTaskByTUUID(task.TUUID).get(0).name);//task.TUUID);
     				}
     			}
-    			
+    			assignedTasks.remove(taskdao.getTaskByTUUID(projectEntry.TUUID).get(0).name);
     			newTeammate.setTasks(assignedTasks.toArray(new String[0]));
     			
     			teammates.add(newTeammate);
