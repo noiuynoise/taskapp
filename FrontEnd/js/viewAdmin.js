@@ -52,8 +52,7 @@ function processAdminViewResponse(response) {
                 archiveButton.value = "No";
             }
 
-            //TODO: make this call the archive project request from the api
-            //archiveButton.onclick = function();
+            archiveButton.onclick = function() {handleArchiveClick(x['projectID'])};
 
             newArchivedCell.appendChild(archiveButton);
 

@@ -18,7 +18,7 @@ function handleRemoveTeammateClick() {
 
 function processRemoveTeammateResponse(teammateName, response) {
     if (response.status == 200) {
-        console.log(200)
+        console.log(response)
         location.reload()
     } else {
         document.getElementById("teammateDoesNotExistErrorText").innerHTML = "Teammate does not exist"
