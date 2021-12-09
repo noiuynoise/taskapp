@@ -8,7 +8,7 @@ function processProjectViewResponse(response) {
     var teammateList = js["teammates"]
 
     if (response.status == 200) {
-        document.getElementById("projectNameTitle").innerHTML = projectName
+        document.getElementById("projectNameTitle").innerHTML = projectName + " - Project View"
         document.getElementById("invisiblePIDBox").innerHTML = projectID
         console.log(projectID)
         document.title = projectName

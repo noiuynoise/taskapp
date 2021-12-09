@@ -11,7 +11,7 @@ function handleTeamViewReturnClick() {
 function loadTeamView() {
     var xhr = new XMLHttpRequest();
     var projectNameFromHash = location.hash.substring(1);
-    document.getElementById("projectNameTitle").innerHTML = projectNameFromHash
+    document.getElementById("projectNameTitle").innerHTML = projectNameFromHash + " - Team View"
     xhr.open("GET", team_view_url + projectNameFromHash, true);
     xhr.send();
 
