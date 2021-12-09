@@ -130,3 +130,12 @@
 #removeTeammateDiv {
     padding-top: 10px;
 }
+
+#taskTable {
+    padding-bottom: 20px;
+}
+
+#completedButton {
+    width: 10px;
+    height: 10px;
+}
