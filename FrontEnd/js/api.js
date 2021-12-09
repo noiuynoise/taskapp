@@ -13,3 +13,5 @@ var archive_project_url = base_url + "archiveproject" //POST
 var team_view_url = base_url + "teamview/" //GET
 var rename_task_url = base_url + "renametask" //POST
 var mark_task_url = base_url + "marktask" //POST
+var assign_teammate_url = base_url + "assignteammate" //POST
+var unassign_teammate_url = base_url + "unassignteammate" //POST

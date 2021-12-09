@@ -23,7 +23,8 @@ function processProjectViewResponse(response) {
                 var newCompleteCell = newRow.insertCell(2);
                 var newRenameCell = newRow.insertCell(3);
                 var newDecomposeCell = newRow.insertCell(4);
-                var newAssignedTeammatesCell = newRow.insertCell(5);
+                var newEditTeammatesForTaskCell = newRow.insertCell(5)
+                var newAssignedTeammatesCell = newRow.insertCell(6);
 
                 var renameText = document.createElement('input');
                 renameText.type = "text";
@@ -37,6 +38,28 @@ function processProjectViewResponse(response) {
                 renameButton.value = "Rename";
                 renameButton.onclick = function() {renameClick(x['ID'], projectID, renameText.value)};
                 newRenameCell.appendChild(renameButton);
+
+                var editTaskTeammatesText = document.createElement('input');
+                editTaskTeammatesText.type = "text";
+                editTaskTeammatesText.id = "editTaskTeammatesText";
+                editTaskTeammatesText.placeholder = "Teammate"
+                newEditTeammatesForTaskCell.appendChild(editTaskTeammatesText);
+
+                var assignButton = document.createElement('input');
+                assignButton.type = "button";
+                assignButton.id = "assignButton";
+                assignButton.value = "Assign";
+                assignButton.onclick = function()
+                {editTaskTeammatesRequest(editTaskTeammatesText.value, projectID, x['ID'], assign_teammate_url)};
+                newEditTeammatesForTaskCell.appendChild(assignButton);
+
+                var unassignButton = document.createElement('input');
+                unassignButton.type = "button";
+                unassignButton.id = "unassignButton";
+                unassignButton.value = "Unassign";
+                unassignButton.onclick = function()
+                {editTaskTeammatesRequest(editTaskTeammatesText.value, projectID, x['ID'], unassign_teammate_url)};
+                newEditTeammatesForTaskCell.appendChild(unassignButton);
 
                 var decomposeButton = document.createElement('input');
                 decomposeButton.type = "button";
@@ -121,7 +144,7 @@ function getAssignedTeammatesFromTask(taskID, teammateList) {
     return validTeammateArray;
 }
 
-function processMarkTaskResponse(response) {
+function processGenericResponse(response) {
     if (response.status == 200) {
         console.log(response.status)
         location.reload()
@@ -138,7 +161,22 @@ function completedClick(taskID) {
 
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log("XHR:" + xhr.responseText);
-            processMarkTaskResponse(xhr);
+            processGenericResponse(xhr);
+        }
+    }
+}
+
+function editTaskTeammatesRequest(teammate, projectID, taskID, call) {
+    var xhr = makeThreeFieldAPICall(teammate, projectID, taskID, "teammate", "projectid", "taskid", call)
+
+    // This will process results and update HTML as appropriate.
+    xhr.onloadend = function () {
+        console.log(xhr);
+        console.log(xhr.response);
+
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("XHR:" + xhr.responseText);
+            processGenericResponse(xhr);
         }
     }
 }
