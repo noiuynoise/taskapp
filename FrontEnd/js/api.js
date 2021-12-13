@@ -15,3 +15,4 @@ var rename_task_url = base_url + "renametask" //POST
 var mark_task_url = base_url + "marktask" //POST
 var assign_teammate_url = base_url + "assignteammate" //POST
 var unassign_teammate_url = base_url + "unassignteammate" //POST
+var decompose_task_url = base_url + "decomposetask" //POST

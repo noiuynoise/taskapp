@@ -65,6 +65,7 @@ function processProjectViewResponse(response) {
                 decomposeButton.type = "button";
                 decomposeButton.id = "decomposeButton";
                 decomposeButton.value = "Decompose"
+                decomposeButton.onclick = function() {decomposeClick(projectID, x['ID'])}
 
                 newDecomposeCell.appendChild(decomposeButton);
 
@@ -179,4 +180,30 @@ function editTaskTeammatesRequest(teammate, projectID, taskID, call) {
             processGenericResponse(xhr);
         }
     }
+}
+
+function decomposeClick(projectID, taskID) {
+    document.getElementById("decomposeTaskDiv").style.visibility = 'visible'
+    document.getElementById("submitDecomposeTask").onclick = function(){handleDecomposeTaskRequest(projectID, taskID)}
+}
+
+function handleDecomposeTaskRequest(projectID, taskID) {
+    document.getElementById("decomposeTaskDiv").style.visibility = 'hidden'
+    var decomposeText = document.getElementById("decomposeTaskName")
+    var tasks = []
+    tasks.push(decomposeText)
+
+    var xhr = makeThreeFieldAPICall(projectID, taskID, tasks, "projectid", "taskid", "tasks", decompose_task_url)
+
+    // This will process results and update HTML as appropriate.
+    xhr.onloadend = function () {
+        console.log(xhr);
+        console.log(xhr.response);
+
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("XHR:" + xhr.responseText);
+            //processGenericResponse(xhr);
+        }
+    }
+
 }
