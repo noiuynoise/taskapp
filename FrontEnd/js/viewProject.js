@@ -15,76 +15,7 @@ function processProjectViewResponse(response) {
         document.getElementById("responseBody").innerHTML = response.response
 
         if (response.status == 200) {
-            taskList.forEach(function(x) {
-                var table = document.getElementById("taskTable")
-                var newRow = table.insertRow(-1);
-                var newNameCell = newRow.insertCell(0);
-                var newIDCell = newRow.insertCell(1);
-                var newCompleteCell = newRow.insertCell(2);
-                var newRenameCell = newRow.insertCell(3);
-                var newDecomposeCell = newRow.insertCell(4);
-                var newEditTeammatesForTaskCell = newRow.insertCell(5)
-                var newAssignedTeammatesCell = newRow.insertCell(6);
-
-                var renameText = document.createElement('input');
-                renameText.type = "text";
-                renameText.id = "renameText";
-                renameText.placeholder = "New Name"
-                newRenameCell.appendChild(renameText);
-
-                var renameButton = document.createElement('input');
-                renameButton.type = "button";
-                renameButton.id = "renameButton";
-                renameButton.value = "Rename";
-                renameButton.onclick = function() {renameClick(x['ID'], projectID, renameText.value)};
-                newRenameCell.appendChild(renameButton);
-
-                var editTaskTeammatesText = document.createElement('input');
-                editTaskTeammatesText.type = "text";
-                editTaskTeammatesText.id = "editTaskTeammatesText";
-                editTaskTeammatesText.placeholder = "Teammate"
-                newEditTeammatesForTaskCell.appendChild(editTaskTeammatesText);
-
-                var assignButton = document.createElement('input');
-                assignButton.type = "button";
-                assignButton.id = "assignButton";
-                assignButton.value = "Assign";
-                assignButton.onclick = function()
-                {editTaskTeammatesRequest(editTaskTeammatesText.value, projectID, x['ID'], assign_teammate_url)};
-                newEditTeammatesForTaskCell.appendChild(assignButton);
-
-                var unassignButton = document.createElement('input');
-                unassignButton.type = "button";
-                unassignButton.id = "unassignButton";
-                unassignButton.value = "Unassign";
-                unassignButton.onclick = function()
-                {editTaskTeammatesRequest(editTaskTeammatesText.value, projectID, x['ID'], unassign_teammate_url)};
-                newEditTeammatesForTaskCell.appendChild(unassignButton);
-
-                var decomposeButton = document.createElement('input');
-                decomposeButton.type = "button";
-                decomposeButton.id = "decomposeButton";
-                decomposeButton.value = "Decompose"
-                decomposeButton.onclick = function() {decomposeClick(projectID, x['ID'])}
-
-                newDecomposeCell.appendChild(decomposeButton);
-
-                newNameCell.innerHTML = x['name']
-                newNameCell.style.fontFamily = "Comic Sans MS"
-                newIDCell.innerHTML = x['IDNum']
-
-                var imgButton = document.createElement('input');
-                imgButton.type = "image";
-                imgButton.id = "completedButton";
-                if (x['complete'] == true) {
-                    imgButton.src = "imgsources/greenCheck.png";
-                } else {
-                    imgButton.src = "imgsources/redX.png";
-                }
-                imgButton.onclick = function() {completedClick(x['ID'])};
-                newCompleteCell.appendChild(imgButton);
-                newAssignedTeammatesCell.innerHTML = getAssignedTeammatesFromTask(x['ID'], teammateList)
-            })
+            displayTasks(taskList, teammateList, projectID, "")
         } else {
             console.log("400")
         }
@@ -189,9 +120,11 @@ function decomposeClick(projectID, taskID) {
 
 function handleDecomposeTaskRequest(projectID, taskID) {
     document.getElementById("decomposeTaskDiv").style.visibility = 'hidden'
-    var decomposeText = document.getElementById("decomposeTaskName")
+    var decomposeText = document.getElementById("decomposeTaskName").value
+    console.log(decomposeText)
     var tasks = []
     tasks.push(decomposeText)
+    console.log(tasks)
 
     var xhr = makeThreeFieldAPICall(projectID, taskID, tasks, "projectid", "taskid", "tasks", decompose_task_url)
 
@@ -202,8 +135,82 @@ function handleDecomposeTaskRequest(projectID, taskID) {
 
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log("XHR:" + xhr.responseText);
-            //processGenericResponse(xhr);
+            processGenericResponse(xhr);
         }
     }
 
+}
+function displayTasks(taskList, teammateList, projectID, parentID) {
+    taskList.forEach(function(x) {
+        var table = document.getElementById("taskTable")
+        var newRow = table.insertRow(-1);
+        var newNameCell = newRow.insertCell(0);
+        var newIDCell = newRow.insertCell(1);
+        var newCompleteCell = newRow.insertCell(2);
+        var newRenameCell = newRow.insertCell(3);
+        var newDecomposeCell = newRow.insertCell(4);
+        var newEditTeammatesForTaskCell = newRow.insertCell(5)
+        var newAssignedTeammatesCell = newRow.insertCell(6);
+
+        var renameText = document.createElement('input');
+        renameText.type = "text";
+        renameText.id = "renameText";
+        renameText.placeholder = "New Name"
+        newRenameCell.appendChild(renameText);
+
+        var renameButton = document.createElement('input');
+        renameButton.type = "button";
+        renameButton.id = "renameButton";
+        renameButton.value = "Rename";
+        renameButton.onclick = function() {renameClick(x['ID'], projectID, renameText.value)};
+        newRenameCell.appendChild(renameButton);
+
+        var editTaskTeammatesText = document.createElement('input');
+        editTaskTeammatesText.type = "text";
+        editTaskTeammatesText.id = "editTaskTeammatesText";
+        editTaskTeammatesText.placeholder = "Teammate"
+        newEditTeammatesForTaskCell.appendChild(editTaskTeammatesText);
+
+        var assignButton = document.createElement('input');
+        assignButton.type = "button";
+        assignButton.id = "assignButton";
+        assignButton.value = "Assign";
+        assignButton.onclick = function()
+        {editTaskTeammatesRequest(editTaskTeammatesText.value, projectID, x['ID'], assign_teammate_url)};
+        newEditTeammatesForTaskCell.appendChild(assignButton);
+
+        var unassignButton = document.createElement('input');
+        unassignButton.type = "button";
+        unassignButton.id = "unassignButton";
+        unassignButton.value = "Unassign";
+        unassignButton.onclick = function()
+        {editTaskTeammatesRequest(editTaskTeammatesText.value, projectID, x['ID'], unassign_teammate_url)};
+        newEditTeammatesForTaskCell.appendChild(unassignButton);
+
+        var decomposeButton = document.createElement('input');
+        decomposeButton.type = "button";
+        decomposeButton.id = "decomposeButton";
+        decomposeButton.value = "Decompose"
+        decomposeButton.onclick = function() {decomposeClick(projectID, x['ID'])}
+
+        newDecomposeCell.appendChild(decomposeButton);
+
+        newNameCell.innerHTML = x['name']
+        newNameCell.style.fontFamily = "Comic Sans MS"
+        newIDCell.innerHTML = parentID + x['IDNum']
+
+        var imgButton = document.createElement('input');
+        imgButton.type = "image";
+        imgButton.id = "completedButton";
+        if (x['complete'] == true) {
+            imgButton.src = "imgsources/greenCheck.png";
+        } else {
+            imgButton.src = "imgsources/redX.png";
+        }
+        imgButton.onclick = function() {completedClick(x['ID'])};
+        newCompleteCell.appendChild(imgButton);
+        newAssignedTeammatesCell.innerHTML = getAssignedTeammatesFromTask(x['ID'], teammateList)
+
+        displayTasks(x['subtasks'], teammateList, projectID, parentID + x["IDNum"] + ".")
+    })
 }
