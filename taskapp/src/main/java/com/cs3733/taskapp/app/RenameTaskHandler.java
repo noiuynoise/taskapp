@@ -37,6 +37,11 @@ public class RenameTaskHandler implements RequestHandler<RenameTaskRequest, Bool
     		if(! currentProjects.get(0).PUUID.equals("")){ throw new Exception("project with PUUID does not exist");}
     		if(currentProjects.get(0).archived){ throw new Exception("project is archived. exist");}
     		
+    		//check if ID is valid
+    		currentProjects = taskdao.getTaskByTUUID(input.getTaskID());
+    		if(currentProjects.isEmpty()) { throw new Exception("TUUID does not exist");}
+
+    		
     		//edit project
     		TaskEntry task = currentProjects.get(0);
     		

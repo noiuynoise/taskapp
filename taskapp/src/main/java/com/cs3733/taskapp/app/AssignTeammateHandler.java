@@ -56,6 +56,10 @@ public class AssignTeammateHandler implements RequestHandler<AssignTeammateReque
     		
     		List<TeammateEntry> teammatesOnProject = teamdao.getTeammateByTUUID(projectTUUID);
     		
+    		//check if ID is valid
+    		List<TaskEntry> project = taskdao.getTaskByTUUID(projectTUUID);
+    		if(project.get(0).archived){ throw new Exception("project is archived. exist");}
+    		
     		List<String> teammateNames = new ArrayList<String>();
     		
     		for(TeammateEntry teammate:teammatesOnProject) {

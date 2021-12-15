@@ -10,6 +10,7 @@ import com.cs3733.taskapp.db.TaskEntry;
 import com.cs3733.taskapp.db.TasksDAO;
 import com.cs3733.taskapp.db.TeammateDAO;
 import com.cs3733.taskapp.db.TeammateEntry;
+import com.cs3733.taskapp.http.Task;
 import com.cs3733.taskapp.http.Teammate;
 import com.cs3733.taskapp.http.TeammateRequest;
 
@@ -33,11 +34,30 @@ public class MarkTaskHandler implements RequestHandler<String, Boolean> {
         context.getLogger().log("\nMarking Task: " + input + "\n");
     	
         TasksDAO taskdao = new TasksDAO(context);
+        TeammateDAO teamdao = new TeammateDAO(context);
     	try {
     		//check if ID is valid
     		List<TaskEntry> currentProjects = taskdao.getTaskByTUUID(input);
     		if(currentProjects.isEmpty()) { throw new Exception("TUUID does not exist");}
     		//if(currentProjects.get(0).PUUID.equals("")) { throw new Exception("TUUID points to task not project. does not exist");}
+    		
+    		Task currTask = taskdao.getTask(input);
+    		if(currentProjects.get(0).archived){ throw new Exception("project is archived. exist");}
+    		
+    		//find top level PUUID
+    		String nextPUUID = currTask.getParentID();
+    		String projectTUUID = currTask.getParentID();
+    		while(! nextPUUID.equals("")) {
+    			projectTUUID = nextPUUID;
+    			TaskEntry upperTask = taskdao.getTaskByTUUID(nextPUUID).get(0);
+    			nextPUUID = upperTask.PUUID;
+    		}
+    		
+    		List<TeammateEntry> teammatesOnProject = teamdao.getTeammateByTUUID(projectTUUID);
+    		
+    		//check if ID is valid
+    		List<TaskEntry> project = taskdao.getTaskByTUUID(projectTUUID);
+    		if(project.get(0).archived){ throw new Exception("project is archived. exist");}
     		
     		//edit project
     		TaskEntry task = currentProjects.get(0);
