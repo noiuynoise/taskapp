@@ -143,3 +143,7 @@
 #decomposeTaskDiv {
     visibility: hidden;
 }
+
+#teammateTableDiv {
+    padding-bottom: 10px;
+}

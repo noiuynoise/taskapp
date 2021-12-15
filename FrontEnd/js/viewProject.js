@@ -12,10 +12,11 @@ function processProjectViewResponse(response) {
         document.getElementById("invisiblePIDBox").innerHTML = projectID
         console.log(projectID)
         document.title = projectName
-        document.getElementById("responseBody").innerHTML = response.response
+        //document.getElementById("responseBody").innerHTML = response.response
 
         if (response.status == 200) {
             displayTasks(taskList, teammateList, projectID, "")
+            displayTeammates(teammateList)
         } else {
             console.log("400")
         }
@@ -212,5 +213,24 @@ function displayTasks(taskList, teammateList, projectID, parentID) {
         newAssignedTeammatesCell.innerHTML = getAssignedTeammatesFromTask(x['ID'], teammateList)
 
         displayTasks(x['subtasks'], teammateList, projectID, parentID + x["IDNum"] + ".")
+    })
+}
+
+function displayTeammates(teammateList) {
+    teammateList.forEach(function(x) {
+        var table = document.getElementById("teammateTable")
+        var newRow = table.insertRow(-1);
+        var newNameCell = newRow.insertCell(0);
+
+        newNameCell.innerHTML = x['name']
+
+        var taskNames = ''
+
+        console.log(x['tasks'])
+        x['tasks'].forEach(function(x) {
+            taskNames = taskNames + (x + ', ')
+        })
+        console.log(taskNames)
+
     })
 }
