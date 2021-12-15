@@ -43,6 +43,7 @@ public class AssignTeammateHandler implements RequestHandler<AssignTeammateReque
     		if(currentProjects.isEmpty()) { throw new Exception("TUUID does not exist");}
     		Task currTask = taskdao.getTask(input.getTaskID());
     		if(currTask.getSubtasks().length > 0){ throw new Exception("Subtasks exist on this task. Task is not terminal");}
+    		if(currentProjects.get(0).archived){ throw new Exception("project is archived. exist");}
     		
     		//find top level PUUID
     		String nextPUUID = currTask.getParentID();

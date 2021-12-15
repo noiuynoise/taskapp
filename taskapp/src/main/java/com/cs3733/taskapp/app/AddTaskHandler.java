@@ -43,6 +43,7 @@ public class AddTaskHandler implements RequestHandler<AddTaskRequest, Task[]> {
     		List<TaskEntry> currentProjects = taskdao.getTaskByTUUID(input.getProjectID());
     		if(currentProjects.isEmpty()) { throw new Exception("project with PUUID does not exist");}
     		if(! currentProjects.get(0).PUUID.equals("")){ throw new Exception("project with PUUID does not exist");}
+    		if(currentProjects.get(0).archived){ throw new Exception("project is archived. exist");}
     		
     		List<TaskEntry> currentTasks = taskdao.getTaskByPUUID(input.getProjectID());
     		

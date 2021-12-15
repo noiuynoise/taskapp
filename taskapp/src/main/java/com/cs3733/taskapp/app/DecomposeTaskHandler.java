@@ -37,15 +37,15 @@ public class DecomposeTaskHandler implements RequestHandler<DecomposeTaskRequest
         TeammateDAO teamdao = new TeammateDAO(context);
     	try {
     		//check if ID is valid
-    		Task project = taskdao.getTask(input.getProjectID());
-    		if(project.getAllTUUID().contains(input.getTaskID()) == false) {
-    			throw new Exception("Task does not exist in project");
-    		}
+    		List<TaskEntry> currentProjects = taskdao.getTaskByTUUID(input.getProjectID());
+    		if(currentProjects.isEmpty()) { throw new Exception("project with PUUID does not exist");}
+    		if(! currentProjects.get(0).PUUID.equals("")){ throw new Exception("project with PUUID does not exist");}
+    		if(currentProjects.get(0).archived){ throw new Exception("project is archived. exist");}
     		
     		//check if task has already been decomposed
     		Task upperTask = taskdao.getTask(input.getTaskID());
     		if(upperTask.getSubtasks().length > 0) {
-    			throw new Exception("Task has already been decomposed. exists");
+    			//throw new Exception("Task has already been decomposed. exists");
     		}
     		
     		//check if project is archived
@@ -61,7 +61,7 @@ public class DecomposeTaskHandler implements RequestHandler<DecomposeTaskRequest
     		}
     		
     		//create new tasks
-    		int idCounter = 1;
+    		int idCounter = 1 + upperTask.getSubtasks().length;
     		for(String taskName:input.getTasks()) {
     			TaskEntry newTask = new TaskEntry(UUID.randomUUID().toString(), input.getTaskID(), taskName, false, false, idCounter);
     			taskdao.addTask(newTask);

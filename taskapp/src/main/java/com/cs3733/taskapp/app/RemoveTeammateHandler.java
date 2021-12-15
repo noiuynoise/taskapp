@@ -37,7 +37,13 @@ public class RemoveTeammateHandler  implements RequestHandler<TeammateRequest, B
 	    TasksDAO taskdao = new TasksDAO(context);
 		TeammateDAO teamdao = new TeammateDAO(context);
 		try {
-		
+			
+    		//check if ID is valid
+    		List<TaskEntry> currentProjects = taskdao.getTaskByTUUID(input.getProjectID());
+    		if(currentProjects.isEmpty()) { throw new Exception("project with PUUID does not exist");}
+    		if(! currentProjects.get(0).PUUID.equals("")){ throw new Exception("project with PUUID does not exist");}
+    		if(currentProjects.get(0).archived){ throw new Exception("project is archived. exist");}
+			
 			boolean status = teamdao.removeTeammate(input.getName(), input.getProjectID());
 			
 			if (status == false)

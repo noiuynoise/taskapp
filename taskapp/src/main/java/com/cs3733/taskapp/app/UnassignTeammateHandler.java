@@ -6,9 +6,10 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.cs3733.taskapp.db.TasksDAO;
 import com.cs3733.taskapp.db.TeammateDAO;
+import com.cs3733.taskapp.http.AssignTeammateRequest;
 import com.cs3733.taskapp.http.TeammateRequest;
 
-public class UnassignTeammateHandler implements RequestHandler<TeammateRequest, Boolean> {
+public class UnassignTeammateHandler implements RequestHandler<AssignTeammateRequest, Boolean> {
 
     private AmazonS3 s3 = AmazonS3ClientBuilder.standard().build();
     
@@ -23,15 +24,15 @@ public class UnassignTeammateHandler implements RequestHandler<TeammateRequest, 
     
     
     @Override
-    public Boolean handleRequest(TeammateRequest input, Context context) {
-	    context.getLogger().log("\nUnassigning Teammate: " + input.getName() + " from: " + input.getProjectID() + "\n");
+    public Boolean handleRequest(AssignTeammateRequest input, Context context) {
+	    context.getLogger().log("\nUnassigning Teammate: " + input.getTeammate() + " from: " + input.getTaskID() + "\n");
 	
 		
 	    TasksDAO taskdao = new TasksDAO(context);
 		TeammateDAO teamdao = new TeammateDAO(context);
 		try {
-		
-			boolean status = teamdao.removeTeammate(input.getName(), input.getProjectID());
+			
+			boolean status = teamdao.removeTeammate(input.getTeammate(), input.getTaskID());
 			
 			if (status == false)
 			{
