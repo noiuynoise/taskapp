@@ -13,22 +13,19 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.events.S3Event;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
-import com.cs3733.taskapp.http.ProjectResponse;
+import com.cs3733.taskapp.http.AddTaskRequest;
+import com.cs3733.taskapp.http.Task;
 
-/**
- * A simple test harness for locally invoking your Lambda function handler.
- */
+import junit.framework.TestCase;
+
 @RunWith(MockitoJUnitRunner.class)
-public class CreateProjectHandlerTest {
-
+public class TestAddTaskHandler extends LambdaTest {
     private final String CONTENT_TYPE = "image/jpeg";
     private S3Event event;
 
@@ -60,15 +57,36 @@ public class CreateProjectHandlerTest {
         return ctx;
     }
 
-    @Test
-    public void testTaskFunctionHandler() {
-    	//s3Client.setRegion();
-    	CreateProjectHandler handler = new CreateProjectHandler(s3Client);
-        Context ctx = createContext();
+	void testSuccessInput() throws IOException {
 
-        ProjectResponse output = handler.handleRequest("name2", ctx);
-
-        // TODO: validate output here if needed.
-        Assert.assertEquals(CONTENT_TYPE, output);
+    	
     }
+	
+//    void testFailInput(String incoming, int failureCode) throws IOException {
+//    	AddTaskHandler handler = new AddTaskHandler();
+//    	AddTaskRequest req = new Gson().fromJson(incoming, AddTaskRequest.class);
+//    }
+    
+    @Test
+	public void testSuccessAddedTask() {
+    	AddTaskHandler handler = new AddTaskHandler(s3Client);
+    	
+    	String[] bop = {"boop","beep"};
+    	AddTaskRequest req = new AddTaskRequest("poopoo", bop);
+    	
+        Task[] response = handler.handleRequest(req, createContext());
+        
+        Boolean work = false;
+        
+        for(Task tsk: response) {
+            for(String str: bop) {
+            	if (tsk.getName().equals(str))
+            		work = true;
+            }
+        }
+        
+        Assert.assertTrue(work);
+	}
+	
+	
 }
