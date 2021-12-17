@@ -75,7 +75,7 @@ public class TestDecomposeTaskHandler extends LambdaTest {
         Task[] response2 = handler2.handleRequest(req, createContext());
         // test task added to project
         String holdMeStr;
-        String holdMeTUUID;
+        String holdMeTUUID = "";
         
         for(Task tsk: response2) {
             for(String str: bop) {
@@ -85,6 +85,9 @@ public class TestDecomposeTaskHandler extends LambdaTest {
             		//task added
             }
         }
+        //checking to make sure that a TUUID was held
+        Assert.assertFalse(holdMeTUUID.equals(""));
+        
         //decompose task from project
         DecomposeTaskHandler handler3 = new DecomposeTaskHandler(s3Client);
         DecomposeTaskRequest dcmReq = new DecomposeTaskRequest(response1.getProjectTUUID(), holdMeTUUID, bop);
