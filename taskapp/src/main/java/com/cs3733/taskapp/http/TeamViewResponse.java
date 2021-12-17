@@ -6,7 +6,7 @@ public class TeamViewResponse {
 
 	public Teammate[] getTeammates() { return teammates; }
 	public void setTeammates(Teammate[] teammates) { this.teammates = teammates; }
-	
+
 	public String getProjectID() { return projectid; }
 	public void setProjectID(String projectid) { this.projectid = projectid; }
 
