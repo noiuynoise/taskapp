@@ -16,9 +16,9 @@ public class DatabaseUtil {
 	// https://docs.aws.amazon.com/lambda/latest/dg/env_variables.html
 	//
 	// The above link shows how to do that.
-	public static String rdsMySqlDatabaseUrl;// = "taskapp.cwysctigob1y.us-east-2.rds.amazonaws.com";
-	public static String dbUsername;// = "admin";
-	public static String dbPassword;// = "AndrewColbyNikkiZeke";
+	public static String rdsMySqlDatabaseUrl = "taskapp.cwysctigob1y.us-east-2.rds.amazonaws.com";
+	public static String dbUsername = "admin";
+	public static String dbPassword = "AndrewColbyNikkiZeke";
 		
 	public final static String jdbcTag = "jdbc:mysql://";
 	public final static String rdsMySqlDatabasePort = "3306";
@@ -45,15 +45,15 @@ public class DatabaseUtil {
 			System.out.println("USE TEST DB:" + useTestDB);
 		}
 		
-		dbUsername = System.getenv("dbUsername");
+		//dbUsername = System.getenv("dbUsername");
 		if (dbUsername == null) {
 			System.err.println("Environment variable dbUsername is not set!");
 		}
-		dbPassword = System.getenv("dbPassword");
+		//dbPassword = System.getenv("dbPassword");
 		if (dbPassword == null) {
 			System.err.println("Environment variable dbPassword is not set!");
 		}
-		rdsMySqlDatabaseUrl = System.getenv("rdsMySqlDatabaseUrl");
+		//rdsMySqlDatabaseUrl = System.getenv("rdsMySqlDatabaseUrl");
 		if (rdsMySqlDatabaseUrl == null) {
 			System.err.println("Environment variable rdsMySqlDatabaseUrl is not set!");
 		}

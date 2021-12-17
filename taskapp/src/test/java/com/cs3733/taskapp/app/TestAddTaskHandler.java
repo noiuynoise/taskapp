@@ -25,6 +25,7 @@ import com.cs3733.taskapp.http.Task;
 import junit.framework.TestCase;
 
 @RunWith(MockitoJUnitRunner.class)
+
 public class TestAddTaskHandler extends LambdaTest {
     private final String CONTENT_TYPE = "image/jpeg";
     private S3Event event;
