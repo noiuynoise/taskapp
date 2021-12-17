@@ -21,6 +21,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
 import com.cs3733.taskapp.http.AddTaskRequest;
 import com.cs3733.taskapp.http.CreateProjectRequest;
+import com.cs3733.taskapp.http.DeleteProjectRequest;
 import com.cs3733.taskapp.http.ProjectRequest;
 import com.cs3733.taskapp.http.ProjectResponse;
 import com.cs3733.taskapp.http.Task;
@@ -59,36 +60,50 @@ public class TestCreateProjectHandler extends LambdaTest {
 
         return ctx;
     }
-
-	void testSuccessInput() throws IOException {
-
-    	
-    }
 	
-	CreateProjectHandler handler = new CreateProjectHandler(s3Client);
-	String testProjectName = "teusdhgoirtslngi";
-	ProjectResponse response = handler.handleRequest(testProjectName, createContext());
     @Test
 	public void testCreateProjectResponse() {
+    	//create project to delete
+    	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
+    	String testProjectName = "teusdhgoirtslngi";
+    	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
+    	
+    	
         Boolean work = false;
-        if(response.getProjectName().equals(testProjectName)) {
+        if(response1.getProjectName().equals(testProjectName)) {
         	work = true;
         }
         
         Assert.assertTrue(work);
+        
+        //delete it
+    	DeleteProjectHandler handler2 = new DeleteProjectHandler(s3Client);
+    	DeleteProjectRequest req = new DeleteProjectRequest(response1.getProjectTUUID());
+    	Boolean response2 = handler2.handleRequest(response1.getProjectTUUID(), createContext());
 	}
     
     @Test
    	public void testCreateProjectRequest() {
-           Boolean work = false;
-           String pns = "penis";
-           ProjectRequest req = new ProjectRequest(pns);
+    	//create project to delete
+    	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
+    	String testProjectName = "teusdhgoirtslngi";
+    	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
+    	
+    	String puuid = response1.getProjectTUUID();
+    	
+    	Boolean work = false;
+    	String pns = "penis";
+    	ProjectRequest req = new ProjectRequest(pns);
            
-           if(req.getProjectID().equals(pns)) {
-           	work = true;
-           }
-           
-           Assert.assertTrue(work);
+    	if(puuid.equals(pns)) {
+    	   work = true;
+        }
+        Assert.assertTrue(work);
+        
+        //delete it
+       	DeleteProjectHandler handler2 = new DeleteProjectHandler(s3Client);
+       	DeleteProjectRequest req2 = new DeleteProjectRequest(puuid);
+       	Boolean response2 = handler2.handleRequest(puuid, createContext());
    	}
 	
 }

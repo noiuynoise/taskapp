@@ -22,6 +22,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.cs3733.taskapp.http.AddTaskRequest;
 import com.cs3733.taskapp.http.CreateProjectRequest;
 import com.cs3733.taskapp.http.DecomposeTaskRequest;
+import com.cs3733.taskapp.http.DeleteProjectRequest;
 import com.cs3733.taskapp.http.ProjectRequest;
 import com.cs3733.taskapp.http.ProjectResponse;
 import com.cs3733.taskapp.http.Task;
@@ -68,6 +69,7 @@ public class TestDecomposeTaskHandler extends LambdaTest {
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
     	String testProjectName = "teusdhgoirtslngi";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
+    	String puuid = response1.getProjectTUUID();
     	//add task to project
     	AddTaskHandler handler2 = new AddTaskHandler(s3Client);
     	String[] bop = {"boop"};
@@ -99,6 +101,11 @@ public class TestDecomposeTaskHandler extends LambdaTest {
         		work = false;
         }
         Assert.assertTrue(work);
+        
+        //delete project
+       	DeleteProjectHandler handler4 = new DeleteProjectHandler(s3Client);
+       	DeleteProjectRequest req2 = new DeleteProjectRequest(puuid);
+       	Boolean response4 = handler4.handleRequest(puuid, createContext());
 	}
 }
 

@@ -20,6 +20,7 @@ import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
 import com.cs3733.taskapp.http.AddTaskRequest;
+import com.cs3733.taskapp.http.DeleteProjectRequest;
 import com.cs3733.taskapp.http.ProjectResponse;
 import com.cs3733.taskapp.http.Task;
 import com.cs3733.taskapp.http.Teammate;
@@ -64,15 +65,23 @@ public class TestArchiveProjectHandler extends LambdaTest {
 
     	
     }
-	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-	String testProjectName = "teusdhgoirtslngi";
-	ProjectResponse response = handler1.handleRequest(testProjectName, createContext());
+	
     @Test
 	public void testArchiveProjectHandle() {
-    	String uuid = response.getProjectTUUID();
+    	//create project to delete
+    	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
+    	String testProjectName = "teusdhgoirtslngi";
+    	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
+    	
+    	String puuid = response1.getProjectTUUID();
+    	
     	ArchiveProjectHandler handler2 = new ArchiveProjectHandler(s3Client);
-    	Assert.assertTrue(handler2.handleRequest(uuid, createContext()));
+    	Assert.assertTrue(handler2.handleRequest(puuid, createContext()));
+    	
+    	//delete it
+    	DeleteProjectHandler handler3 = new DeleteProjectHandler(s3Client);
+    	DeleteProjectRequest req = new DeleteProjectRequest(puuid);
+    	Boolean response2 = handler3.handleRequest(puuid, createContext());
 	}
-	
 }
 

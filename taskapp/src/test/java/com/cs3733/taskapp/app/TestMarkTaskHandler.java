@@ -22,6 +22,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.cs3733.taskapp.http.AddTaskRequest;
 import com.cs3733.taskapp.http.CreateProjectRequest;
 import com.cs3733.taskapp.http.DecomposeTaskRequest;
+import com.cs3733.taskapp.http.DeleteProjectRequest;
 import com.cs3733.taskapp.http.MarkTaskRequest;
 import com.cs3733.taskapp.http.ProjectRequest;
 import com.cs3733.taskapp.http.ProjectResponse;
@@ -69,10 +70,11 @@ public class TestMarkTaskHandler extends LambdaTest {
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
     	String testProjectName = "teusdhgoirtslngi";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
+    	String puuid = response1.getProjectTUUID();
     	//add task to project
     	AddTaskHandler handler2 = new AddTaskHandler(s3Client);
     	String[] bop = {"boop"};
-    	AddTaskRequest req = new AddTaskRequest(response1.getProjectTUUID(), bop);
+    	AddTaskRequest req = new AddTaskRequest(puuid, bop);
         Task[] response2 = handler2.handleRequest(req, createContext());
         
         // get task UUID
@@ -87,10 +89,15 @@ public class TestMarkTaskHandler extends LambdaTest {
         }
         //decompose task from project
         MarkTaskHandler handler3 = new MarkTaskHandler(s3Client);
-        MarkTaskRequest mrkReq = new MarkTaskRequest(response1.getProjectTUUID(),holdMeTUUID, true);
+        MarkTaskRequest mrkReq = new MarkTaskRequest(puuid,holdMeTUUID, true);
         Boolean response3 = handler3.handleRequest(holdMeTUUID, createContext()); 
        
         Assert.assertTrue(response3);
+        
+        //delete it
+    	DeleteProjectHandler handler4 = new DeleteProjectHandler(s3Client);
+    	DeleteProjectRequest req4 = new DeleteProjectRequest(puuid);
+    	Boolean response4 = handler4.handleRequest(puuid, createContext());
 	}
 }
 
