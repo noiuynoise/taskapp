@@ -13,22 +13,22 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.events.S3Event;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
+import com.cs3733.taskapp.http.AddTaskRequest;
+import com.cs3733.taskapp.http.CreateProjectRequest;
+import com.cs3733.taskapp.http.ProjectRequest;
 import com.cs3733.taskapp.http.ProjectResponse;
+import com.cs3733.taskapp.http.Task;
 
-/**
- * A simple test harness for locally invoking your Lambda function handler.
- */
+import junit.framework.TestCase;
+
 @RunWith(MockitoJUnitRunner.class)
-public class TestCreateProjectHandler {
-
+public class TestCreateProjectHandler extends LambdaTest {
     private final String CONTENT_TYPE = "image/jpeg";
     private S3Event event;
 
@@ -54,21 +54,41 @@ public class TestCreateProjectHandler {
     private Context createContext() {
         TestContext ctx = new TestContext();
 
-        // TODO: customize your contedaxt here if needed.
+        // TODO: customize your context here if needed.
         ctx.setFunctionName("Your Function Name");
 
         return ctx;
     }
 
-    @Test
-    public void testTaskFunctionHandler() {
-    	//s3Client.setRegion();
-    	CreateProjectHandler handler = new CreateProjectHandler(s3Client);
-        Context ctx = createContext();
+	void testSuccessInput() throws IOException {
 
-        ProjectResponse output = handler.handleRequest("name2", ctx);
-
-        // TODO: validate output here if needed.
-        Assert.assertEquals(CONTENT_TYPE, output);
+    	
     }
+	
+	CreateProjectHandler handler = new CreateProjectHandler(s3Client);
+	String testProjectName = "teusdhgoirtslngi";
+	ProjectResponse response = handler.handleRequest(testProjectName, createContext());
+    @Test
+	public void testCreateProjectResponse() {
+        Boolean work = false;
+        if(response.getProjectName().equals(testProjectName)) {
+        	work = true;
+        }
+        
+        Assert.assertTrue(work);
+	}
+    
+    @Test
+   	public void testCreateProjectRequest() {
+           Boolean work = false;
+           String pns = "penis";
+           ProjectRequest req = new ProjectRequest(pns);
+           
+           if(req.getProjectID().equals(pns)) {
+           	work = true;
+           }
+           
+           Assert.assertTrue(work);
+   	}
+	
 }

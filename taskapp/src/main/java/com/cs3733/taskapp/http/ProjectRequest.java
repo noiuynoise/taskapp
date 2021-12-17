@@ -16,8 +16,7 @@ public class ProjectRequest {
 		return "ProjectRequest(" + projectid + ")";
 	}
 	
-	public ProjectRequest ()
-	{
+	public ProjectRequest (){
 		
 	}
 	

@@ -63,17 +63,14 @@ public class TestAddTaskHandler extends LambdaTest {
     	
     }
 	
-//    void testFailInput(String incoming, int failureCode) throws IOException {
-//    	AddTaskHandler handler = new AddTaskHandler();
-//    	AddTaskRequest req = new Gson().fromJson(incoming, AddTaskRequest.class);
-//    }
-    
     @Test
 	public void testSuccessAddedTask() {
     	AddTaskHandler handler = new AddTaskHandler(s3Client);
     	
+    	String testPUUID = "";
+    	
     	String[] bop = {"boop","beep"};
-    	AddTaskRequest req = new AddTaskRequest("poopoo", bop);
+    	AddTaskRequest req = new AddTaskRequest(testPUUID, bop);
     	
         Task[] response = handler.handleRequest(req, createContext());
         
@@ -85,7 +82,6 @@ public class TestAddTaskHandler extends LambdaTest {
             		work = true;
             }
         }
-        
         Assert.assertTrue(work);
 	}
 	
