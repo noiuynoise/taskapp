@@ -84,6 +84,11 @@ public class TestListProjectHandler extends LambdaTest {
     			work = true;
     	}
     	Assert.assertTrue(work);
+    	
+    	//delete it
+    	DeleteProjectHandler handler3 = new DeleteProjectHandler(s3Client);
+    	DeleteProjectRequest req = new DeleteProjectRequest(response1.getProjectTUUID());
+    	Boolean response3 = handler3.handleRequest(response1.getProjectTUUID(), createContext());
    	}
 	
 }
