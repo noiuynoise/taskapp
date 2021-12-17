@@ -1,0 +1,738 @@
+commit de45811489d88ea6687ce153a5255f2d4a7b410f
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Fri Dec 17 14:15:41 2021 -0500
+
+    tests past 60
+
+commit a2cfb41d972184b3fd18ca1a386a36d3c3a8d73f
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 05:01:57 2021 -0500
+
+    Update TestUnassignTeammateHandler.java
+
+commit e2adf0b9a8c83d7384f967bce8bedad57d8c88a9
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 04:57:15 2021 -0500
+
+    Update TestRenameTaskHandler.java
+
+commit 7f6eee8fbb472b5dbec36c9818170e7d5ee632d2
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 04:56:29 2021 -0500
+
+    fuck this one, not worth it
+
+commit 5071038f9519d32246873cc9dd841003aeb0cb1b
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 04:56:14 2021 -0500
+
+    Update TeamViewResponse.java
+
+commit c854b7b3034e556e7ff07cb2f706b2a404bf0f7f
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 04:53:18 2021 -0500
+
+    Update TestTeamViewHandler.java
+
+commit b6589559dd8997fc802556bf67edadb8d13e7846
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Fri Dec 17 03:30:30 2021 -0500
+
+    dszfnjdsflkjdsfioh
+
+commit 06b76ecb6687db56fbc888a954149463c8fb220d
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 03:06:37 2021 -0500
+
+    srthtrdh
+
+commit 406b13d4466fbf74d9e449355bdaca05b151b414
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Fri Dec 17 03:01:26 2021 -0500
+
+    stuff
+
+commit f125f5ef811f2500bd5cf1f612bdb5a5328a82ff
+Merge: f5ee275 e229143
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Fri Dec 17 02:38:42 2021 -0500
+
+    Merge branch 'testCasres' of https://github.com/noiuynoise/taskapp into testCasres
+
+commit e22914339aec3d33ce6a531bfd6ab824fe4cf373
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 02:37:53 2021 -0500
+
+    penis
+
+commit f5ee275faa62c365934393ab08c316f79450a26f
+Merge: 48ebe9e de0295c
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Fri Dec 17 02:06:19 2021 -0500
+
+    Merge branch 'testCasres' of https://github.com/noiuynoise/taskapp into testCasres
+
+commit de0295cb6a1be92ae286a801108869fbccdcb8df
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 02:01:56 2021 -0500
+
+    Update TestMarkTaskHandler.java
+
+commit 5b572cd9e518f303b6c41d2841a6593d33de0100
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 01:43:29 2021 -0500
+
+    Update TestListProjectHandler.java
+
+commit 0067a01c71c8762643e0a35e4c2af1fc47c76e4d
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 01:35:25 2021 -0500
+
+    Update TestDeleteProjectHandler.java
+
+commit c36799f456f7fb6c6cef3efc8b06ed15019c0e98
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 01:26:08 2021 -0500
+
+    Update TestDecomposeTaskHandler.java
+
+commit 660450c5377a69067570aff30996d9102c712448
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Fri Dec 17 01:21:43 2021 -0500
+
+    draft TestDecomposeTaskHandler
+
+commit 3a53cb80b0a24e47c57861a1aae8594aa0b0e75e
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Thu Dec 16 22:46:48 2021 -0500
+
+    drafted testSuccesAddedTeammate
+
+commit 48ebe9e11693f1d7e8280fc5732f6b89b224aca8
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Thu Dec 16 22:28:56 2021 -0500
+
+    junit now works
+
+commit 2b1c037a2c957762300b91455155062d9cf3aa66
+Author: zeke2856 <46726503+zeke2856@users.noreply.github.com>
+Date:   Thu Dec 16 22:06:13 2021 -0500
+
+    TestCase 1
+    
+    Testing TestAddTaskHandler
+
+commit 42e77ef2597e6fff353e5d4dae60f8843434e903
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Mon Dec 13 17:21:00 2021 -0500
+
+    Fixed decompose
+
+commit 9ecea9aef671ed46d3740e303a485b41af2759e8
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Mon Dec 13 16:01:09 2021 -0500
+
+    Added Decompose
+
+commit 73cbfd3482499728126029cbf4e1789cad461b13
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Thu Dec 9 14:54:53 2021 -0500
+
+    Fixed assign and unassign
+
+commit b148af4b57c0f62980d98dfc67baa3166f31a5eb
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Thu Dec 9 14:35:12 2021 -0500
+
+    Added assign and unassign teammates
+
+commit d5e31fe3b92ecddd03dbee20e455f40ccb462431
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Thu Dec 9 14:11:33 2021 -0500
+
+    Improved project view
+
+commit 6cbf68557ecc0944419c747767abfee8941eb1bc
+Merge: 6ec9810 93044c7
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Wed Dec 8 14:36:07 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp
+
+commit 6ec981061ec0c400de26a244279640c5c9c6f106
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Wed Dec 8 14:36:01 2021 -0500
+
+    Added teamview
+
+commit 93044c76006713052b9c6310b73f9fb297bf7e08
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Wed Dec 8 14:23:45 2021 -0500
+
+    fix
+
+commit 10d4bc4f6469f4aa3c41cb211868c1b4b842439a
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Wed Dec 8 14:15:45 2021 -0500
+
+    remove project from task list
+
+commit d7956986238a7c2dc3fbbb7db697cfc7e552aeb0
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Wed Dec 8 14:13:53 2021 -0500
+
+    team view gets name not ID now
+
+commit b905cda6407021fa10afb2d36d280dc9e1dfe1c1
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Wed Dec 8 13:22:37 2021 -0500
+
+    Comic sans
+
+commit e52ee930092e11ec5003ebd33e95e1766797006a
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Wed Dec 8 13:18:52 2021 -0500
+
+    Added archiviability
+
+commit 92a3aab8fa7eadff4c9ec44e02edce2db83e8e17
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Sun Dec 5 12:58:13 2021 -0500
+
+    GUI cleanup
+
+commit 381dc6a0c4937482983a7597165f29cff85676b6
+Merge: e3f77c6 5f49416
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Dec 5 12:44:13 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit e3f77c6a8cddd64cfb61b60bed971afa20ca4183
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Dec 5 12:44:02 2021 -0500
+
+    added error to removeTeammate when teammate does not exist
+
+commit 5f49416f5f7713628d9a4b5df56e2459ce730cee
+Merge: 003ffde 2694f9a
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Sun Dec 5 12:43:37 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp
+
+commit 003ffdea07e1c7eefc6b84376843b4b48f471519
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Sun Dec 5 12:43:27 2021 -0500
+
+    Added Remove teammate, cleaned up code
+
+commit 2694f9af769fd9a79252f2d08e0ccf30aaf79a90
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Sun Dec 5 01:01:20 2021 -0500
+
+    completed all handlers. just need junit testing now
+
+commit 2b144638218229ad26cff70773e1ec6f2e030f4b
+Merge: d2571c0 027d177
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Thu Dec 2 18:02:50 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit d2571c041f33f3f60094352f80940c53be8a9caf
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Thu Dec 2 18:02:40 2021 -0500
+
+    removeTeammate written
+
+commit 027d1779ed7117c0e987442a282adfc9b1b17d97
+Merge: e7131bd d5fcc01
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Thu Dec 2 17:49:20 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp
+
+commit e7131bd4ed10d65cd536f13b51d8b81cc3a0ed15
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Thu Dec 2 17:49:15 2021 -0500
+
+    Added add task functionality
+
+commit d5fcc016f55eb0e628bbb616bab1c4d9aa0bfede
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Thu Dec 2 17:33:59 2021 -0500
+
+    checks if adding to project or task
+
+commit 8e07623c71be5fef561890499788b4a5af41cf85
+Merge: 3d8e5eb b43c444
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Thu Dec 2 16:49:21 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit 3d8e5eb6244dfe0daa12c9f6534554349e7ba476
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Thu Dec 2 16:49:14 2021 -0500
+
+    added code to prevent teammates from being added to a subdivided task
+
+commit b43c444c2b3616f74a9a34a57d9747e881676a4d
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Thu Dec 2 16:44:17 2021 -0500
+
+    Added Add Teammate functionality
+
+commit 9d4cf2be1eeba0f0f5efc96cf00addbb2d570c6c
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Thu Dec 2 12:20:27 2021 -0500
+
+    added many lambda functions
+
+commit 20ae4418e62a682b595b7a618ccccaeacfe36c5c
+Merge: b256fda f5362f6
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Wed Dec 1 15:26:21 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit b256fda0c92bb26d39e33db64e87d49fcbcf45cb
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Wed Dec 1 15:26:11 2021 -0500
+
+    added error for project not existing
+
+commit f5362f6eefdd61bf9ee45052a0a2cbf9060ba0e8
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Wed Dec 1 14:59:54 2021 -0500
+
+    Added delete project handling
+
+commit 438cbdc194dce49710aa22b21aa3b017084d7aa4
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Wed Dec 1 14:43:20 2021 -0500
+
+    deleteProjectHandler written
+
+commit 2b5b8b1617eb8c429a10794b4f79146bd0e48203
+Merge: 33ffd89 cc63888
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Wed Dec 1 14:37:39 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit 33ffd895622d8e1d62089ab53f9dc96e8b04c897
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Wed Dec 1 14:37:26 2021 -0500
+
+    added unneeded deleteProjectRequest
+
+commit cc63888e96621784e03f1fc2c57aeb26ceb77f8b
+Merge: d6de093 25ce761
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Wed Dec 1 14:33:11 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp
+
+commit d6de0939705d2f6ba6763463a703bb631938f521
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Wed Dec 1 14:32:50 2021 -0500
+
+    Fixed shitty circular code
+
+commit 25ce7617547e06f472b5704a219b18b34b4b5557
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Wed Dec 1 14:08:01 2021 -0500
+
+    created DeleteProjectHandler
+
+commit 4b465d886df8577e669b3a949daab43c4d73933e
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Tue Nov 30 15:30:30 2021 -0500
+
+    Admin view, create project, view project all working
+
+commit e69b2cf8a52eaccbddb19249ca436c0505c9316b
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Tue Nov 30 15:28:16 2021 -0500
+
+    this works now
+
+commit e9ec323346359690938835831602feb43df1b0ef
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Mon Nov 29 19:08:54 2021 -0500
+
+    did CORS things
+
+commit 121ba4fa07da14b569633a86c5884279b66b8ed8
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Mon Nov 29 01:51:02 2021 -0500
+
+    create project fully funcitonal, work on other handlers
+
+commit b74662eefde075142cc2da7bb11360d2159fb19d
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Tue Nov 23 03:24:42 2021 -0500
+
+    made databases work
+
+commit 9354c7a8eea7444aea75b85fa0eb1c54754a7371
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Mon Nov 22 18:01:43 2021 -0500
+
+    calc project
+
+commit 65330cfbff7aa36b6f50ae096ee8927b06d10bc8
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Mon Nov 22 18:00:48 2021 -0500
+
+    started db stuff, now zeke will do stuff
+
+commit 4ae25ff2480d6f2af6939107151ff669eda02dde
+Merge: 6b9961a ad3a9e4
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Mon Nov 22 16:36:18 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit ad3a9e4059a4b7af5c980f284d93c200561dd77b
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Mon Nov 22 16:36:03 2021 -0500
+
+    Fixed project view
+
+commit 6b9961abc3d4ce89f1885b24260a8663a4fd2262
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Mon Nov 22 16:32:04 2021 -0500
+
+    jaNK merge
+
+commit 6cfce9aadf0791783820612f3e4f685569c38143
+Author: Colb131 <cfrechette@wpi.edu>
+Date:   Sun Nov 21 21:25:44 2021 -0500
+
+    Front end stuff
+
+commit 692ccc97c6164921bd6861b42571adfc0005252c
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 20:07:01 2021 -0500
+
+    order
+
+commit 3495dd657ac09c22ab99280ebdfbdcd5b5bbc5d4
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 20:03:33 2021 -0500
+
+    fix
+
+commit 9b6d83e6d6aee47c96f5ae4d7a1710b65c305092
+Merge: f579bb5 59a3c5d
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 20:01:02 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit f579bb599af9d764dc85db60b56c6683b87e971e
+Merge: 9f9f1d3 4cc115f
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 20:00:51 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+    
+    Conflicts:
+            taskapp/src/main/java/com/cs3733/taskapp/http/ListProjectsResponse.java
+
+commit 59a3c5d28b3ebdfed271e0342372755ca4e64be7
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 20:00:25 2021 -0500
+
+    beep
+
+commit 4cc115feadc974e349fcdd82ef6769538912fc9b
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:59:22 2021 -0500
+
+    fix  listprojectresponse tostring
+
+commit 9f9f1d35f744422d3f98d3430819aad4fb9f5b16
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:59:20 2021 -0500
+
+    order
+
+commit 36c8b0bddb0fbab1c265dd0cb053571de5448ca9
+Merge: a1d2e5f addd7fe
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:57:48 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit addd7fe247f1525b0ac6de721d680fac08a302c1
+Merge: 5f56ad2 0b5cc63
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:57:24 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp
+
+commit 5f56ad2a1f4d9ac2871b939fe97dad850a44eeb0
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:57:23 2021 -0500
+
+    bop
+
+commit a1d2e5fa380641497c565e74a486349a94e92dcf
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:57:16 2021 -0500
+
+    tostring
+
+commit 0b5cc63a0f56aedd183ee04948628dbd1983a629
+Merge: 8f8c365 d706dc9
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:56:21 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit 8f8c3658b796dfec063e03029a3487d0cb8fbfc8
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:56:13 2021 -0500
+
+    ordering
+
+commit d706dc936d8b9fd47be05829cb4f2ff634790e57
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:55:52 2021 -0500
+
+    bop
+
+commit e5b4a09854c40892f94270d5226a2aac5a672158
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:54:58 2021 -0500
+
+    bop
+
+commit 0963b44c724b59a2081b9027e21fb3adda49beca
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:54:29 2021 -0500
+
+    renametaskid fix
+
+commit 34974db911334e46215f2a697f9d818b3d77dcf7
+Merge: 30a4129 52002d6
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:53:58 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp
+
+commit 30a4129bf8c6ce6e37cbacc6f748e9aa42034dec
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:52:10 2021 -0500
+
+    general fixing
+
+commit 52002d647c2f5832aa92decb68bc6acedb6c3776
+Merge: 2a2b453 747359f
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:50:14 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit 2a2b4534eacd61706b3d8ff8a832e9de9277f335
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:50:04 2021 -0500
+
+    toStrings
+
+commit 747359fc9bc1e8b2ed3a52472347f6ea33f8b49e
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:47:42 2021 -0500
+
+    fixed error message
+
+commit f65a5c6888ba1440e1a9e8827a44e402d23da164
+Merge: 07c54b8 602151c
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:46:32 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp
+
+commit 07c54b8e25ef00df7162f0e55c826a600b658cd9
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:46:24 2021 -0500
+
+    createprojectrequest done
+
+commit 602151ca7f777dd802694f29b695f0b610c5bae4
+Merge: 37d641c 2c7c611
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:45:09 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit 37d641cf841cebe3a51f184f91fdfcea485b8a68
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:45:02 2021 -0500
+
+    toStrings
+
+commit 2c7c611f28fdce273a2653b263935df0f7d76148
+Merge: 7c5854a a4b269c
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:44:04 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp
+
+commit 7c5854a89bd6dee6acb396d2f9ef459c8967685d
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:43:55 2021 -0500
+
+    fixed assignteammate and finished marktaskrequest
+
+commit a4b269c8f76d885d1c28dc990669011db135b826
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:40:35 2021 -0500
+
+    ProjectRequest
+
+commit b4b904094b23e8e913b51f7926eb326e9434e026
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:39:29 2021 -0500
+
+    AssignTeammateRequest  done
+
+commit f0313ebad1c9eb0b90543e3a5693697d184e5257
+Merge: 8a9e4ff eb02561
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:36:01 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit 8a9e4ff9ae5111619cbb195d8b793a1abba4f07c
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:35:52 2021 -0500
+
+    merge
+
+commit ace99196e11da9f69892052e3950df71453d8116
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:35:43 2021 -0500
+
+    deleting comments
+
+commit 82ef42e50d3185ea67400a257fad65112d813411
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:34:52 2021 -0500
+
+    ErrorResponse done
+
+commit 811a577cf6982407668172b20abffbe5b203c416
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:34:17 2021 -0500
+
+    RenameTaskRequest
+
+commit eb025617ae2c2a67e3679f918c89d97783ffc3f8
+Merge: 8d8f8e8 bdadb8b
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:28:04 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp
+
+commit 8d8f8e8fad8517905995279b9703e04c74f7c358
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:27:45 2021 -0500
+
+    finished  decomposetaskrequest
+
+commit bdadb8b9e9fa36e9b0754d800e096e2fa2834b9b
+Merge: f5f91ca 5bce10d
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:26:11 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit 5bce10d9cb50b6f0a46c46de0f985078f2ef955f
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:23:30 2021 -0500
+
+    AddTaskRequest  Done
+
+commit 6e9688f0222ec218de907f0749b3ebfe889a0535
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:16:24 2021 -0500
+
+    TeamViewResponse Base done
+
+commit 4b2638ee59a64aa97b750bfae48ce24c2abfdc77
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 19:08:56 2021 -0500
+
+    Finished TeammateRequest Base
+
+commit f5f91cad86ac482b30953f60c72fc8b18dfec324
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 19:05:21 2021 -0500
+
+    teammate merge
+
+commit c1a36ae46a3225c1eedf47e7832e249e2219bc43
+Merge: 3292ff8 e74f95b
+Author: Ashley <Ashley@AshleysLaptop>
+Date:   Sun Nov 21 19:04:26 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+    
+    Conflicts:
+            taskapp/src/main/java/com/cs3733/taskapp/http/ListProjectsResponse.java
+            taskapp/src/main/java/com/cs3733/taskapp/http/Task.java
+            taskapp/src/main/java/com/cs3733/taskapp/http/Teammate.java
+
+commit 3292ff88bdd950f18c548e74742f0e2563c49e3c
+Author: silverywater <catgirl2359@gmail.com>
+Date:   Sun Nov 21 18:58:55 2021 -0500
+
+    did task and teammate
+
+commit e74f95bac62678589d20400305644873984fd727
+Merge: c1ba334 2dfdc34
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Sun Nov 21 18:52:13 2021 -0500
+
+    Merge branch 'master' of https://github.com/noiuynoise/taskapp.git
+
+commit c1ba334dd4b44e4d0c521fbeaeb9f489c056cf05
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Sun Nov 21 18:51:58 2021 -0500
+
+    Added Task, Teammate, ProjectResponse
+
+commit 2dfdc34d4cd4415fd5578ca5c373d9457280b8b4
+Author: Ezekiel Andreassen <zeke2856@gmail.com>
+Date:   Sun Nov 21 18:51:53 2021 -0500
+
+    added shtz
+
+commit 09fadcc91037cff6b994b54f69f5104cf3fd3c8f
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Sun Nov 21 18:19:44 2021 -0500
+
+    implemented ProjectResponse
+
+commit 24f98ee37c9bd78f0807e3b1a89bd81597d9a26f
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Sun Nov 21 18:07:57 2021 -0500
+
+    made initial handler
+
+commit 4c6a411f4090e0b09ccae10b081edd21467f49ba
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Sun Nov 21 16:59:58 2021 -0500
+
+    start
+
+commit 4cfa77b7a53ad9cd02bb69b1c7ebb569bd24a45d
+Author: noiuynoise <andrew.mularoni@rocketmail.com>
+Date:   Sun Nov 21 16:56:17 2021 -0500
+
+    starting project
