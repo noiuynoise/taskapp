@@ -56,7 +56,7 @@ public class TestDecomposeTaskHandler extends LambdaTest {
 	public void testDecomposeTaskHandler() {
     	//make project
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "123456789 TestDecomposeTaskHandler";
+    	String testProjectName = "123 TestDecomposeTaskHandler";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
     	String puuid = response1.getProjectTUUID();
     	//add task to project
@@ -84,12 +84,7 @@ public class TestDecomposeTaskHandler extends LambdaTest {
         DecomposeTaskRequest dcmReq = new DecomposeTaskRequest(response1.getProjectTUUID(), holdMeTUUID, bop);
         Task response3 = handler3.handleRequest(dcmReq, createContext()); 
        
-        boolean work = true;
-        for(Task tsk: response2) {
-        	if (tsk.getID().equals(response3.getID()))
-        		work = false;
-        }
-        Assert.assertTrue(work);
+        Assert.assertTrue(response3.getSubtasks().length > 0);
         
         //delete project
        	DeleteProjectHandler handler4 = new DeleteProjectHandler(s3Client);

@@ -60,7 +60,7 @@ public class TestArchiveProjectHandler extends LambdaTest {
     	//create project to delete
     	System.out.println("archive");
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "123456789 TestArchiveProjectHandler";
+    	String testProjectName = "123 TestArchiveProjectHandler";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
     	
     	String puuid = response1.getProjectTUUID();

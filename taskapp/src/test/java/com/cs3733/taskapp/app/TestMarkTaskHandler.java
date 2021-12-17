@@ -57,7 +57,7 @@ public class TestMarkTaskHandler extends LambdaTest {
 	public void testMarkTaskHandler() {
     	//make project
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "123456789 TestMarkTaskHandler";
+    	String testProjectName = "123 TestMarkTaskHandler";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
     	String puuid = response1.getProjectTUUID();
     	//add task to project

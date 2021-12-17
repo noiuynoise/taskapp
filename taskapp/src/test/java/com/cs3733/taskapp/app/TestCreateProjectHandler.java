@@ -54,7 +54,7 @@ public class TestCreateProjectHandler extends LambdaTest {
 	public void testCreateProjectResponse() {
     	//create project to delete
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "teusdhgoirtslngi";
+    	String testProjectName = "123 testCreateProjectResponse";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
     	
     	
@@ -75,19 +75,16 @@ public class TestCreateProjectHandler extends LambdaTest {
    	public void testCreateProjectRequest() {
     	//create project to delete
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "123456789 testCreateProjectResponse";
+    	String testProjectName = "123 testCreateProjectResponse";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
     	
     	String puuid = response1.getProjectTUUID();
     	
-    	Boolean work = false;
-    	String pns = "penis";
-    	ProjectRequest req = new ProjectRequest(pns);
+
+    	ProjectRequest req = new ProjectRequest("PEENER");
            
-    	if(puuid.equals(pns)) {
-    	   work = true;
-        }
-        Assert.assertTrue(work);
+
+        Assert.assertFalse(req.getProjectID().equals(puuid));
         
         //delete it
        	DeleteProjectHandler handler2 = new DeleteProjectHandler(s3Client);

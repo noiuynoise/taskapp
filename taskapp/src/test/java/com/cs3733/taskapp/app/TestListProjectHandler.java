@@ -61,7 +61,7 @@ public class TestListProjectHandler extends LambdaTest {
    	public void testListProjectRequest() {
     	//create project to check if in list
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "123456789 TestListProjectHandler";
+    	String testProjectName = "123 TestListProjectHandler";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
     	//is it in the list?
     	ListProjectsHandler handler2 = new ListProjectsHandler(s3Client);

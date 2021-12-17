@@ -59,7 +59,7 @@ public class TestAddTaskHandler extends LambdaTest {
     	System.out.println("taskadd");
     	//create project to delete
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "123456789 TestAddTaskHandler";
+    	String testProjectName = "123 TestAddTaskHandler";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
     	    	
     	AddTaskHandler handler = new AddTaskHandler(s3Client);

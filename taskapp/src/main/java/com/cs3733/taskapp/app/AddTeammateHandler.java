@@ -42,13 +42,9 @@ public class AddTeammateHandler implements RequestHandler<TeammateRequest, Teamm
     	try {
     		//check if ID is valid
     		List<TaskEntry> currentProjects = taskdao.getTaskByTUUID(input.getProjectID());
-    		if(currentProjects.isEmpty()) { throw new Exception("TUUID does not exist");}
-    		
-    		if (currentProjects.get(0).PUUID.isEmpty() == false || currentProjects.get(0).PUUID.equals("                              ") == false)
-    		{
-    			throw new Exception("Cannot add Teammate to task");
-    		}
-    		
+    		if(currentProjects.isEmpty()) { throw new Exception("project with PUUID does not exist");}
+    		if(! currentProjects.get(0).PUUID.equals("")){ throw new Exception("project with PUUID does not exist");}
+    		if(currentProjects.get(0).archived){ throw new Exception("project is archived. exist");}
     		
     		
     		//check if name already exists
