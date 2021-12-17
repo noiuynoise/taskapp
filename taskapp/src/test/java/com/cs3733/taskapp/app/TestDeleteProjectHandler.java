@@ -59,7 +59,7 @@ public class TestDeleteProjectHandler extends LambdaTest {
    	public void testDeleteProjectRequest() {
     	//create project to delete
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "teusdhgoirtslngi";
+    	String testProjectName = "123456789 TestDeleteProjectHandler";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
     	//delete it
     	DeleteProjectHandler handler2 = new DeleteProjectHandler(s3Client);

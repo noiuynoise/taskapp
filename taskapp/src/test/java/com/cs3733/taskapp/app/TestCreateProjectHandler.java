@@ -75,7 +75,7 @@ public class TestCreateProjectHandler extends LambdaTest {
    	public void testCreateProjectRequest() {
     	//create project to delete
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "teusdhgoirtslngi";
+    	String testProjectName = "123456789 testCreateProjectResponse";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
     	
     	String puuid = response1.getProjectTUUID();

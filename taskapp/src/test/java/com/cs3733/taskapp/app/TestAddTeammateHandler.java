@@ -61,7 +61,7 @@ public class TestAddTeammateHandler extends LambdaTest {
     	//create project to delete
     	System.out.println("teammateadd");
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "teusdhgoirtslngi";
+    	String testProjectName = "123456789 TestAddTeammateHandler";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
   
     	AddTeammateHandler handler = new AddTeammateHandler(s3Client);
