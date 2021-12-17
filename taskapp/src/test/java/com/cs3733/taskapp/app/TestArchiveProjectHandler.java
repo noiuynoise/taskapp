@@ -41,17 +41,6 @@ public class TestArchiveProjectHandler extends LambdaTest {
     @Captor
     private ArgumentCaptor<GetObjectRequest> getObjectRequest;
 
-    @Before
-    public void setUp() throws IOException {
-        event = TestUtils.parse("/s3-event.put.json", S3Event.class);
-
-        // TODO: customize your mock logic for s3 client
-        ObjectMetadata objectMetadata = new ObjectMetadata();
-        objectMetadata.setContentType(CONTENT_TYPE);
-        when(s3Object.getObjectMetadata()).thenReturn(objectMetadata);
-        when(s3Client.getObject(getObjectRequest.capture())).thenReturn(s3Object);
-    }
-
     private Context createContext() {
         TestContext ctx = new TestContext();
 
@@ -69,6 +58,7 @@ public class TestArchiveProjectHandler extends LambdaTest {
     @Test
 	public void testArchiveProjectHandle() {
     	//create project to delete
+    	System.out.println("archive");
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
     	String testProjectName = "teusdhgoirtslngi";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
