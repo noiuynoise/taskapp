@@ -73,7 +73,7 @@ public class TestTeamViewHandler extends LambdaTest {
         Teammate response = handler.handleRequest(req, createContext());
         
         TeamViewHandler handler3 = new TeamViewHandler(s3Client);
-        TeamViewResponse respo = handler3.handleRequest(testPUUID, createContext());
+        TeamViewResponse respo = handler3.handleRequest(testProjectName, createContext());
         
         boolean work = false;
         for(Teammate t: respo.getTeammates()) {

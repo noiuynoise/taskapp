@@ -61,7 +61,7 @@ public class TestUnassignTeammateHandler extends LambdaTest {
     	//create project to delete
     	System.out.println("TestUnassignTeammateHandler");
     	CreateProjectHandler handler1 = new CreateProjectHandler(s3Client);
-    	String testProjectName = "123 TestUnassignTeammateHandler";
+    	String testProjectName = "123 TestUnassignTeammate";
     	ProjectResponse response1 = handler1.handleRequest(testProjectName, createContext());
   
     	AddTeammateHandler handler = new AddTeammateHandler(s3Client);
@@ -76,7 +76,7 @@ public class TestUnassignTeammateHandler extends LambdaTest {
         Assert.assertTrue(response.getName().equals(nm));
         
         UnassignTeammateHandler handler5 = new UnassignTeammateHandler(s3Client);
-        Boolean isRemoved = handler5.handleRequest(req, null);
+        Boolean isRemoved = handler5.handleRequest(req, createContext());
         
         Assert.assertTrue(isRemoved);
       	
